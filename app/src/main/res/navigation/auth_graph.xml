@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_graph"
+    app:startDestination="@id/onboardingFragment">
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="br.com.hellodev.movieapp.presenter.onboarding.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_authentication"
+            app:destination="@id/authentication"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/onboardingFragment"/>
+    </fragment>
+    <navigation android:id="@+id/authentication"
+        app:startDestination="@id/homeAuthFragment">
+        <fragment
+            android:id="@+id/homeAuthFragment"
+            android:name="br.com.hellodev.movieapp.presenter.auth.home.HomeAuthFragment"
+            android:label="fragment_home_auth"
+            tools:layout="@layout/fragment_home_auth" >
+            <action
+                android:id="@+id/action_homeAuthFragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
+            <action
+                android:id="@+id/action_homeAuthFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="br.com.hellodev.movieapp.presenter.auth.login.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login" >
+            <action
+                android:id="@+id/action_loginFragment_to_forgotFragment"
+                app:destination="@id/forgotFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/forgotFragment"
+            android:name="br.com.hellodev.movieapp.presenter.auth.forgot.ForgotFragment"
+            android:label="fragment_forgot"
+            tools:layout="@layout/fragment_forgot" />
+        <fragment
+            android:id="@+id/registerFragment"
+            android:name="br.com.hellodev.movieapp.presenter.auth.register.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register" />
+    </navigation>
+</navigation>
