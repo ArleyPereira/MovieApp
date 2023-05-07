@@ -7,27 +7,49 @@
 
     <fragment
         android:id="@+id/menu_home"
-        android:name="br.com.hellodev.movieapp.presenter.main.home.HomeFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.bottombar.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_menu_home_to_movieGenreFragment"
+            app:destination="@id/movieGenreFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/menu_search"
-        android:name="br.com.hellodev.movieapp.presenter.main.search.SearchFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.bottombar.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+
     <fragment
         android:id="@+id/menu_favorite"
-        android:name="br.com.hellodev.movieapp.presenter.main.favorite.FavoriteFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.bottombar.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+
     <fragment
         android:id="@+id/menu_download"
-        android:name="br.com.hellodev.movieapp.presenter.main.download.DownloadFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.bottombar.download.DownloadFragment"
         android:label="fragment_download"
         tools:layout="@layout/fragment_download" />
+
     <fragment
         android:id="@+id/menu_profile"
-        android:name="br.com.hellodev.movieapp.presenter.main.profile.ProfileFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.bottombar.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/movieGenreFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.moviegenre.MovieGenreFragment"
+        android:label="fragment_movie_genre"
+        tools:layout="@layout/fragment_movie_genre" >
+        <argument
+            android:name="genreId"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

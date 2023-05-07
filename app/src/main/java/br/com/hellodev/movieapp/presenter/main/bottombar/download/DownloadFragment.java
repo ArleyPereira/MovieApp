@@ -1,4 +1,4 @@
-package br.com.hellodev.movieapp.presenter.main.download;
+package br.com.hellodev.movieapp.presenter.main.bottombar.download;
 
 import android.os.Bundle;
 

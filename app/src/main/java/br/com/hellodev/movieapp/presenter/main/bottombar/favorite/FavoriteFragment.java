@@ -1,4 +1,4 @@
-package br.com.hellodev.movieapp.presenter.main.favorite;
+package br.com.hellodev.movieapp.presenter.main.bottombar.favorite;
 
 import android.os.Bundle;
 
