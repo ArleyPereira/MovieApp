@@ -1,7 +1,9 @@
 package br.com.hellodev.movieapp.data.mapper
 
+import br.com.hellodev.movieapp.data.model.CountryResponse
 import br.com.hellodev.movieapp.data.model.GenreResponse
 import br.com.hellodev.movieapp.data.model.MovieResponse
+import br.com.hellodev.movieapp.domain.model.Country
 import br.com.hellodev.movieapp.domain.model.Genre
 import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.presenter.model.GenrePresentation
@@ -28,7 +30,8 @@ fun MovieResponse.toDomain(): Movie {
         title = title,
         video = video,
         voteAverage = voteAverage,
-        voteCount = voteCount
+        voteCount = voteCount,
+        productionCountries = productionCountries?.map { it.toDomain() }
     )
 }
 
@@ -39,3 +42,7 @@ fun Genre.toPresentation(): GenrePresentation {
         movies = emptyList()
     )
 }
+
+fun CountryResponse.toDomain() = Country(
+    name = name
+)

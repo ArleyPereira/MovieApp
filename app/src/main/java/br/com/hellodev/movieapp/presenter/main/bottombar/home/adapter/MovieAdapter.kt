@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hellodev.movieapp.R
-import br.com.hellodev.movieapp.databinding.MovieItemBinding
 import br.com.hellodev.movieapp.domain.model.Movie
 import com.bumptech.glide.Glide
 
 class MovieAdapter(
     private val context: Context,
-    private val layoutInflater: Int
+    private val layoutInflater: Int,
+    private val movieClickListener: (Int?) -> Unit
 ): ListAdapter<Movie, MovieAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     companion object {
@@ -48,6 +48,8 @@ class MovieAdapter(
             .with(context)
             .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
             .into(holder.movieImage)
+
+        holder.itemView.setOnClickListener { movieClickListener(movie.id) }
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

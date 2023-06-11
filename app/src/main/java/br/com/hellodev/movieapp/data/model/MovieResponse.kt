@@ -43,5 +43,8 @@ data class MovieResponse(
     val voteAverage: Float?,
 
     @SerializedName("vote_count")
-    val voteCount: Int?
+    val voteCount: Int?,
+
+    @SerializedName("production_countries")
+    val productionCountries: List<CountryResponse>?
 )

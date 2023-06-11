@@ -30,4 +30,24 @@
         <item name="android:textColorHint">#9E9E9E</item>
     </style>
 
+    <style name="ThemeToolbarSimpleSearchView">
+        <item name="android:textColorPrimary">#212121</item>
+    </style>
+
+    <style name="ToolbarTitleAppearance" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/urbanist_700</item>
+    </style>
+
+    <style name="SearchViewTheme">
+        <item name="colorSecondary">#212121</item>
+        <item name="searchBackground">@color/white</item>
+        <item name="android:inputType">text</item>
+        <item name="android:hint">@string/search_hint</item>
+        <item name="hintColor">#33212121</item>
+        <item name="backIconTint">#212121</item>
+        <item name="android:textColor">#212121</item>
+        <item name="iconsTint">#212121</item>
+    </style>
+
 </resources>

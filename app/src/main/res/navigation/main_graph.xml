@@ -51,5 +51,15 @@
             android:name="name"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.movie_details.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+    <action android:id="@+id/action_global_movieDetailsFragment" app:destination="@id/movieDetailsFragment" />
 
 </navigation>

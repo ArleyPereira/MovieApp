@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import br.com.hellodev.movieapp.BuildConfig
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMoviesByGenreUseCase
+import br.com.hellodev.movieapp.domain.usecase.movie.SearchMoviesUseCase
 import br.com.hellodev.movieapp.util.Constants
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieGenreViewModel @Inject constructor(
-    private val getMoviesByGenreUseCase: GetMoviesByGenreUseCase
+    private val getMoviesByGenreUseCase: GetMoviesByGenreUseCase,
+    private val searchMoviesUseCase: SearchMoviesUseCase
 ): ViewModel() {
 
     fun getMoviesByGenre(genreId: Int?) = liveData(Dispatchers.IO) {
@@ -24,6 +26,27 @@ class MovieGenreViewModel @Inject constructor(
                 apiKey = BuildConfig.API_KEY,
                 language = Constants.Movie.LANGUAGE,
                 genreId = genreId
+            )
+
+            emit(StateView.Success(movies))
+
+        } catch (e: HttpException) {
+            e.printStackTrace()
+            emit(StateView.Error(message = e.message))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(StateView.Error(message = e.message))
+        }
+    }
+
+    fun searchMovies(query: String?) = liveData(Dispatchers.IO) {
+        try {
+            emit(StateView.Loading())
+
+            val movies = searchMoviesUseCase.invoke(
+                apiKey = BuildConfig.API_KEY,
+                language = Constants.Movie.LANGUAGE,
+                query = query
             )
 
             emit(StateView.Success(movies))

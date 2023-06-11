@@ -64,6 +64,9 @@
     <!--    GenreItem-->
     <string name="text_show_all_genre_item">Ver todos</string>
 
+    <!--    MovieGenreFragment-->
+    <string name="text_search_hint_movie_genre_fragment">Pesquisa</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
