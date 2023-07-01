@@ -60,7 +60,7 @@
                 android:layout_marginEnd="24dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/urbanist_700"
-                android:maxLines="2"
+                android:maxLines="1"
                 android:textColor="#212121"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
@@ -94,83 +94,134 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal"
+                android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_movie">
 
-                <ImageView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_star" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_movie">
 
-                <TextView
-                    android:id="@+id/text_vote_average"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/urbanist_500"
-                    android:textColor="@color/color_default"
-                    android:textSize="12sp"
-                    tools:text="9.8" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_star" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:src="@drawable/ic_arrow_right" />
+                    <TextView
+                        android:id="@+id/text_vote_average"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/urbanist_500"
+                        android:textColor="@color/color_default"
+                        android:textSize="12sp"
+                        tools:text="9.8" />
 
-                <TextView
-                    android:id="@+id/text_release_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:src="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/text_release_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/urbanist_600"
+                        android:textColor="#424242"
+                        tools:text="2023" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/bg_border_red"
+                        android:fontFamily="@font/urbanist_600"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:text="13+"
+                        android:textColor="@color/color_default"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/text_production_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/bg_border_red"
+                        android:fontFamily="@font/urbanist_600"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:textColor="@color/color_default"
+                        android:textSize="11sp"
+                        tools:text="United States" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/bg_border_red"
+                        android:fontFamily="@font/urbanist_600"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:text="Subtitle"
+                        android:textColor="@color/color_default"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_border_red_full_fill"
                     android:fontFamily="@font/urbanist_600"
-                    android:textColor="#424242"
-                    tools:text="2023" />
+                    android:text="Play"
+                    android:textAllCaps="false"
+                    app:icon="@drawable/ic_play"
+                    app:iconPadding="-21dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:background="@drawable/bg_border_red"
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_border_red_full_line"
                     android:fontFamily="@font/urbanist_600"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="6dp"
-                    android:text="13+"
+                    android:text="Download"
+                    android:textAllCaps="false"
                     android:textColor="@color/color_default"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:id="@+id/text_production_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:background="@drawable/bg_border_red"
-                    android:fontFamily="@font/urbanist_600"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="6dp"
-                    android:textColor="@color/color_default"
-                    android:textSize="11sp"
-                    tools:text="United States" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:background="@drawable/bg_border_red"
-                    android:fontFamily="@font/urbanist_600"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="6dp"
-                    android:text="Subtitle"
-                    android:textColor="@color/color_default"
-                    android:textSize="11sp" />
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/ic_download"
+                    app:iconPadding="-20dp"
+                    app:iconTint="@color/color_default" />
 
             </LinearLayout>
 
