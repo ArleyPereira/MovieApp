@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentMovieDetailsBinding
 import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.presenter.main.movie_details.adapter.CastAdapter
 import br.com.hellodev.movieapp.util.StateView
 import br.com.hellodev.movieapp.util.initToolbar
 import com.bumptech.glide.Glide
@@ -27,6 +29,8 @@ class MovieDetailsFragment : Fragment() {
     private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var castAdapter: CastAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,6 +45,8 @@ class MovieDetailsFragment : Fragment() {
         initToolbar(toolbar = binding.toolbar, lightIcon = true)
 
         getMovieDetails()
+
+        initRecyclerCredits()
     }
 
     private fun getMovieDetails() {
@@ -52,6 +58,33 @@ class MovieDetailsFragment : Fragment() {
 
                 is StateView.Success -> {
                     configData(movie = stateView.data)
+                }
+
+                is StateView.Error -> {
+
+                }
+            }
+        }
+    }
+
+    private fun initRecyclerCredits() {
+        castAdapter = CastAdapter()
+
+        with(binding.recyclerCast) {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = castAdapter
+        }
+    }
+
+    private fun getCredits() {
+        viewModel.getCredits(movieId = args.movieId).observe(viewLifecycleOwner) { stateView ->
+            when (stateView) {
+                is StateView.Loading -> {
+
+                }
+
+                is StateView.Success -> {
+                    castAdapter.submitList(stateView.data?.cast)
                 }
 
                 is StateView.Error -> {
@@ -79,6 +112,13 @@ class MovieDetailsFragment : Fragment() {
 
         binding.textReleaseDate.text = year
         binding.textProductionCountry.text = movie?.productionCountries?.get(0)?.name ?: ""
+
+        val genres = movie?.genres?.map { it.name }?.joinToString(", ")
+        binding.textGenres.text = getString(R.string.text_all_genres_movie_details_fragment, genres)
+
+        binding.textDescription.text = movie?.overview
+
+        getCredits()
     }
 
     override fun onDestroyView() {

@@ -9,8 +9,8 @@ data class MovieResponse(
     @SerializedName("backdrop_path")
     val backdropPath: String?,
 
-    @SerializedName("genre_ids")
-    val genreIds: List<Int>?,
+    @SerializedName("genres")
+    val genres: List<GenreResponse>?,
 
     @SerializedName("id")
     val id: Int?,

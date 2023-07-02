@@ -5,24 +5,18 @@ import br.com.hellodev.movieapp.data.model.MovieResponse
 
 interface MovieRepository {
 
-    suspend fun getGenres(apiKey: String, language: String?): GenresResponse
+    suspend fun getGenres(apiKey: String?, language: String?): GenresResponse
 
     suspend fun getMoviesByGenre(
-        apiKey: String,
+        apiKey: String?,
         language: String?,
         genreId: Int?
     ): List<MovieResponse>
 
     suspend fun searchMovies(
-        apiKey: String,
+        apiKey: String?,
         language: String?,
         query: String?
     ): List<MovieResponse>
-
-    suspend fun getMovieDetails(
-        apiKey: String,
-        language: String?,
-        movieId: Int?
-    ): MovieResponse
 
 }
