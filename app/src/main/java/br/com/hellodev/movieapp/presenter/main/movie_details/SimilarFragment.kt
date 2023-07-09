@@ -1,24 +1,20 @@
 package br.com.hellodev.movieapp.presenter.main.movie_details
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.hellodev.movieapp.MainGraphDirections
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentSimilarBinding
 import br.com.hellodev.movieapp.presenter.main.bottombar.home.adapter.MovieAdapter
-import br.com.hellodev.movieapp.presenter.model.GenrePresentation
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SimilarFragment : Fragment() {
@@ -61,8 +57,12 @@ class SimilarFragment : Fragment() {
         movieAdapter = MovieAdapter(
             context = requireContext(),
             layoutInflater = R.layout.movie_genre_item,
-            movieClickListener = {
-
+            movieClickListener = { movieId ->
+                movieId?.let {
+                    val action = MainGraphDirections
+                        .actionGlobalMovieDetailsFragment(movieId)
+                    findNavController().navigate(action)
+                }
             }
         )
 
@@ -70,7 +70,7 @@ class SimilarFragment : Fragment() {
 
         with(binding.recyclerMovies) {
             layoutManager = lm
-            //setHasFixedSize(true)
+            setHasFixedSize(true)
             adapter = movieAdapter
         }
     }
