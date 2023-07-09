@@ -9,6 +9,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_movies"
         android:layout_width="0dp"
+        android:paddingVertical="16dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="8dp"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
