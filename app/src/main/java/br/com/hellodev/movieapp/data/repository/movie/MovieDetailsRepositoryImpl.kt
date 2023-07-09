@@ -34,6 +34,18 @@ class MovieDetailsRepositoryImpl @Inject constructor(
         )
     }
 
+    override suspend fun getSimilar(
+        apiKey: String?,
+        language: String?,
+        movieId: Int?
+    ): List<MovieResponse> {
+        return serviceApi.getSimilar(
+            movieId = movieId,
+            language = language,
+            apiKey = apiKey
+        ).results ?: emptyList()
+    }
+
 }
 
 

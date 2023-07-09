@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,9 +13,11 @@ import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentMovieDetailsBinding
 import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.presenter.main.movie_details.adapter.CastAdapter
+import br.com.hellodev.movieapp.presenter.main.movie_details.adapter.ViewPagerAdapter
 import br.com.hellodev.movieapp.util.StateView
 import br.com.hellodev.movieapp.util.initToolbar
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -24,7 +27,7 @@ class MovieDetailsFragment : Fragment() {
 
     private val args: MovieDetailsFragmentArgs by navArgs()
 
-    private val viewModel: MovieDetailsViewModel by viewModels()
+    private val viewModel: MovieDetailsViewModel by activityViewModels()
 
     private var _binding: FragmentMovieDetailsBinding? = null
     private val binding get() = _binding!!
@@ -47,6 +50,38 @@ class MovieDetailsFragment : Fragment() {
         getMovieDetails()
 
         initRecyclerCredits()
+
+        configTabLayout()
+    }
+
+    private fun configTabLayout() {
+        viewModel.setMovieId(movieId = args.movieId)
+
+        val adapter = ViewPagerAdapter(requireActivity())
+        binding.viewPager.adapter = adapter
+
+        adapter.addFragment(
+            fragment = TrailersFragment(),
+            title = R.string.title_trailers_tab_layout
+        )
+
+        adapter.addFragment(
+            fragment = SimilarFragment(),
+            title = R.string.title_similar_tab_layout
+        )
+
+        adapter.addFragment(
+            fragment = CommentsFragment(),
+            title = R.string.title_comments_tab_layout
+        )
+
+        binding.viewPager.offscreenPageLimit = adapter.itemCount
+
+        TabLayoutMediator(
+            binding.tabs, binding.viewPager
+        ) { tab, position ->
+            tab.text = getString(adapter.getTitle(position))
+        }.attach()
     }
 
     private fun getMovieDetails() {
@@ -71,7 +106,8 @@ class MovieDetailsFragment : Fragment() {
         castAdapter = CastAdapter()
 
         with(binding.recyclerCast) {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = castAdapter
         }
     }

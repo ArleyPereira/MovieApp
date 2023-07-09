@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Movie App</string>
 
+    <!--    TabLayout-->
+    <string name="title_trailers_tab_layout">Trailers</string>
+    <string name="title_similar_tab_layout">Similares</string>
+    <string name="title_comments_tab_layout">Comentários</string>
+
     <!--    BottomBar-->
     <string name="title_menu_home">Início</string>
     <string name="title_menu_search">Pesquisar</string>
