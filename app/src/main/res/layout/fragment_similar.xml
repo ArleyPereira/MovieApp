@@ -9,15 +9,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_movies"
         android:layout_width="0dp"
-        android:paddingVertical="16dp"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:paddingHorizontal="8dp"
-        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/movie_item" />
+        tools:listitem="@layout/movie_genre_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
