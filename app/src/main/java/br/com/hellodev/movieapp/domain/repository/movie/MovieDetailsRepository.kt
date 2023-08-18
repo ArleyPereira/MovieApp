@@ -2,6 +2,7 @@ package br.com.hellodev.movieapp.domain.repository.movie
 
 import br.com.hellodev.movieapp.data.model.CreditResponse
 import br.com.hellodev.movieapp.data.model.MovieResponse
+import br.com.hellodev.movieapp.data.model.MovieReviewResponse
 
 interface MovieDetailsRepository {
 
@@ -22,5 +23,11 @@ interface MovieDetailsRepository {
         language: String?,
         movieId: Int?
     ): List<MovieResponse>
+
+    suspend fun getMovieReviews(
+        apiKey: String?,
+        language: String?,
+        movieId: Int?
+    ): List<MovieReviewResponse>
 
 }

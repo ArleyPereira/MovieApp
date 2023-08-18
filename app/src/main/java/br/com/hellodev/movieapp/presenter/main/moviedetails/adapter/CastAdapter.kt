@@ -1,4 +1,4 @@
-package br.com.hellodev.movieapp.presenter.main.movie_details.adapter
+package br.com.hellodev.movieapp.presenter.main.moviedetails.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

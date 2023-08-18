@@ -1,10 +1,10 @@
-package br.com.hellodev.movieapp.presenter.main.movie_details
+package br.com.hellodev.movieapp.presenter.main.moviedetails.comments
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import br.com.hellodev.movieapp.BuildConfig
-import br.com.hellodev.movieapp.domain.usecase.movie.GetSimilarUseCase
-import br.com.hellodev.movieapp.util.Constants.Movie
+import br.com.hellodev.movieapp.domain.usecase.movie.GetMovieReviewsUseCase
+import br.com.hellodev.movieapp.util.Constants
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -12,17 +12,17 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
-class SimilarViewModel @Inject constructor(
-    private val getSimilarUseCase: GetSimilarUseCase
+class CommentsViewModel @Inject constructor(
+    private val getMovieReviewsUseCase: GetMovieReviewsUseCase
 ) : ViewModel() {
 
-    fun getSimilar(movieId: Int?) = liveData(Dispatchers.IO) {
+    fun getMovieReviews(movieId: Int?) = liveData(Dispatchers.IO) {
         try {
             emit(StateView.Loading())
 
-            val movies = getSimilarUseCase(
+            val movies = getMovieReviewsUseCase(
                 apiKey = BuildConfig.API_KEY,
-                language = Movie.LANGUAGE,
+                language = Constants.Movie.LANGUAGE_ENGLISH,
                 movieId = movieId
             )
 

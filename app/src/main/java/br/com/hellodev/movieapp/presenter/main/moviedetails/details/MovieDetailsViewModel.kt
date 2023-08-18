@@ -1,4 +1,4 @@
-package br.com.hellodev.movieapp.presenter.main.movie_details
+package br.com.hellodev.movieapp.presenter.main.moviedetails.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package br.com.hellodev.movieapp.presenter.main.movie_details.adapter
+package br.com.hellodev.movieapp.presenter.main.moviedetails.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
