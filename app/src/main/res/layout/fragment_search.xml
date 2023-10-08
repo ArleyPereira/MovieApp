@@ -8,7 +8,7 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -16,12 +16,22 @@
         android:background="@drawable/bg_search_view"
         android:theme="@style/SearchViewThemeScreen"
         app:iconifiedByDefault="false"
-        app:queryBackground="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/ib_filter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:queryBackground="@android:color/transparent"
         app:queryHint="@string/title_menu_search"
         app:searchIcon="@drawable/ic_search" />
+
+    <ImageButton
+        android:id="@+id/ib_filter"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_button_filter"
+        android:padding="16dp"
+        android:src="@drawable/ic_filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
