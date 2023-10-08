@@ -56,4 +56,21 @@
         <item name="android:fontFamily">@font/urbanist_600</item>
     </style>
 
+    <style name="SearchViewThemeScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--        cor do botão de apagar o texto-->
+        <item name="colorControlNormal">#BDBDBD</item>
+        <!--        cor do texto de dica(queryHint)-->
+        <item name="android:textColorHint">#BDBDBD</item>
+        <!--        cor do texto digitado-->
+        <item name="android:editTextColor">#212121</item>
+        <!--        font do texto-->
+        <item name="android:fontFamily">@font/urbanist_400</item>
+        <!--        tamanho do texto-->
+        <item name="android:textSize">14sp</item>
+        <!--        cor do cursor-->
+        <item name="colorControlActivated">#212121</item>
+        <!--        tipo do texto-->
+        <item name="android:inputType">textCapSentences</item>
+    </style>
+
 </resources>
