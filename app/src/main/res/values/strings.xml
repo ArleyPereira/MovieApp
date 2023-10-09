@@ -77,6 +77,10 @@
     <string name="text_button_download_movie_details_fragment">Download</string>
     <string name="text_all_genres_movie_details_fragment">Genêro: %1$s</string>
 
+    <!--    SearchFragment-->
+    <string name="text_title_empty_search_fragment">Não encontrado</string>
+    <string name="text_message_empty_search_fragment">Desculpe, a palavra-chave que você digitou não foi encontrada. Tente verificar novamente ou pesquise com outras palavras-chave.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

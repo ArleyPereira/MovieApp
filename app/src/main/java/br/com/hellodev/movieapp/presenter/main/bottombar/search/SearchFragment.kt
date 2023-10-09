@@ -115,7 +115,13 @@ class SearchFragment : Fragment() {
     private fun searchObserver() {
         viewModel.movieList.observe(viewLifecycleOwner) { movieList ->
             movieAdapter.submitList(movieList)
+            emptyState(empty = movieList.isEmpty())
         }
+    }
+
+    private fun emptyState(empty: Boolean) {
+        binding.recyclerMovies.isVisible = !empty
+        binding.layoutEmpty.isVisible = empty
     }
 
     override fun onDestroyView() {
