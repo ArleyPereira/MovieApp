@@ -1,8 +1,10 @@
 package br.com.hellodev.movieapp.di
 
+import br.com.hellodev.movieapp.data.local.repository.MovieLocalRepositoryImpl
 import br.com.hellodev.movieapp.data.repository.auth.FirebaseAuthenticationImpl
 import br.com.hellodev.movieapp.data.repository.movie.MovieDetailsRepositoryImpl
 import br.com.hellodev.movieapp.data.repository.movie.MovieRepositoryImpl
+import br.com.hellodev.movieapp.domain.local.repository.MovieLocalRepository
 import br.com.hellodev.movieapp.domain.repository.auth.FirebaseAuthentication
 import br.com.hellodev.movieapp.domain.repository.movie.MovieDetailsRepository
 import br.com.hellodev.movieapp.domain.repository.movie.MovieRepository
@@ -29,5 +31,10 @@ abstract class DomainModule {
     abstract fun bindsMovieDetailsRepositoryImpl(
         movieDetailsRepositoryImpl: MovieDetailsRepositoryImpl
     ): MovieDetailsRepository
+
+    @Binds
+    abstract fun bindsMovieLocalRepositoryImpl(
+        movieLocalRepositoryImpl: MovieLocalRepositoryImpl
+    ): MovieLocalRepository
 
 }

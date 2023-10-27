@@ -11,7 +11,7 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "br.com.hellodev.movieapp"
@@ -84,6 +84,11 @@ dependencies {
 
     // SimpleSearchView
     implementation("com.github.Ferfalk:SimpleSearchView:0.2.0")
+
+    // Room
+    implementation("androidx.room:room-ktx:${Versions.roomVersion}")
+    implementation("androidx.room:room-runtime:${Versions.roomVersion}")
+    kapt("androidx.room:room-compiler:${Versions.roomVersion}")
 
     // Test
     testImplementation("junit:junit:4.13.2")

@@ -10,4 +10,5 @@ object Versions {
     const val retrofitVersion = "2.9.0"
     const val secretsGradleVersion = "2.0.1"
     const val googleServicesVersion = "4.3.15"
+    const val roomVersion = "2.6.0"
 }

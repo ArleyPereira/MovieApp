@@ -1,5 +1,6 @@
 package br.com.hellodev.movieapp.data.mapper
 
+import br.com.hellodev.movieapp.data.local.entity.MovieEntity
 import br.com.hellodev.movieapp.data.model.AuthorDetailsResponse
 import br.com.hellodev.movieapp.data.model.CountryResponse
 import br.com.hellodev.movieapp.data.model.CreditResponse
@@ -98,5 +99,24 @@ fun MovieReviewResponse.toDomain(): MovieReview {
         id = id,
         updatedAt = updatedAt,
         url = url
+    )
+}
+
+fun Movie.toEntity(): MovieEntity {
+    return MovieEntity(
+        id = id,
+        title = title,
+        poster = posterPath,
+        runtime = runtime,
+        insertion = System.currentTimeMillis()
+    )
+}
+
+fun MovieEntity.toDomain(): Movie {
+    return Movie(
+        id = id,
+        title = title,
+        posterPath = poster,
+        runtime = runtime
     )
 }
