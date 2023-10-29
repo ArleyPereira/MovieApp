@@ -84,6 +84,13 @@
     <!--    DownloadFragment-->
     <string name="text_title_download_fragment">Downloads</string>
 
+    <!--    DialogDownloading-->
+    <string name="text_title_dialog_downloading">Download</string>
+    <string name="text_message_dialog_downloading">Filmes ainda baixando...\nAguarde ou oculte o processo</string>
+    <string name="text_hide_dialog_downloading">Esconder</string>
+    <string name="text_downloaded_size_dialog_downloading">%1$s / %2$s</string>
+    <string name="text_download_progress_dialog_downloading">%1$d%%</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
