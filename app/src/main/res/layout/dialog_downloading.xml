@@ -41,7 +41,7 @@
             android:id="@+id/text_downloading"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1f"
+            android:layout_weight="1"
             android:fontFamily="@font/urbanist_700"
             android:textColor="#212121"
             tools:text="457.2 / 968.5 MB" />
@@ -59,14 +59,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progress_indicator"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1f"
+            android:layout_weight="1"
             app:trackCornerRadius="100dp"
             app:trackThickness="8dp"
             tools:progress="47" />
@@ -77,7 +78,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:paddingStart="8dp"
-            android:paddingTop="8dp"
             android:paddingEnd="0dp"
             android:src="@drawable/ic_close_black_24dp"
             tools:ignore="ContentDescription" />

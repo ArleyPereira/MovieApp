@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import br.com.hellodev.movieapp.R
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 fun Fragment.initToolbar(
     toolbar: Toolbar,
@@ -79,5 +81,15 @@ fun formatCommentDate(date: String?): String {
                 "$monthsDifference meses atrás"
             }
         }
+    }
+}
+
+fun Double.calculateFileSize(): String {
+    val value = this * 10.0
+
+    return if (value >= 1000) {
+        String.format("%.2f GB", value / 1000)
+    } else {
+        String.format("%.1f MB", value)
     }
 }

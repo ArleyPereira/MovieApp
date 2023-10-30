@@ -40,7 +40,8 @@ fun MovieResponse.toDomain(): Movie {
         video = video,
         voteAverage = voteAverage,
         voteCount = voteCount,
-        productionCountries = productionCountries?.map { it.toDomain() }
+        productionCountries = productionCountries?.map { it.toDomain() },
+        runtime = runtime
     )
 }
 
