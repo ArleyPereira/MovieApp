@@ -2,7 +2,6 @@ package br.com.hellodev.movieapp.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import br.com.hellodev.movieapp.data.local.dao.MovieDao
 import br.com.hellodev.movieapp.data.local.db.AppDatabase
 import br.com.hellodev.movieapp.util.Database
@@ -19,7 +18,7 @@ class DatabaseModule {
     @Provides
     fun providesDatabase(
         @ApplicationContext context: Context
-    ): RoomDatabase = Room.databaseBuilder(
+    ): AppDatabase = Room.databaseBuilder(
         context,
         AppDatabase::class.java,
         Database.MOVIE_DATABASE

@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import br.com.hellodev.movieapp.BuildConfig
+import br.com.hellodev.movieapp.domain.local.usecase.InsertMovieUseCase
+import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.domain.usecase.movie.GetCreditsUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMovieDetailsUseCase
 import br.com.hellodev.movieapp.util.Constants
@@ -17,7 +19,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
-    private val getCreditsUseCase: GetCreditsUseCase
+    private val getCreditsUseCase: GetCreditsUseCase,
+    private val insertMovieUseCase: InsertMovieUseCase
 ) : ViewModel() {
 
     private val _movieId = MutableLiveData(0)
@@ -59,6 +62,20 @@ class MovieDetailsViewModel @Inject constructor(
         } catch (e: HttpException) {
             e.printStackTrace()
             emit(StateView.Error(message = e.message))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(StateView.Error(message = e.message))
+        }
+    }
+
+    fun insertMovie(movie: Movie) = liveData(Dispatchers.IO) {
+        try {
+            emit(StateView.Loading())
+
+            insertMovieUseCase(movie)
+
+            emit(StateView.Success(Unit))
+
         } catch (e: Exception) {
             e.printStackTrace()
             emit(StateView.Error(message = e.message))
