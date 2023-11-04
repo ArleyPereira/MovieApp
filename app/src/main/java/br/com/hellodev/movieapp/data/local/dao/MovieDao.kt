@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MovieDao {
 
-    @Query("SELECT * FROM ${Tables.MOVIE_TABLE}")
+    @Query("SELECT * FROM ${Tables.MOVIE_TABLE} ORDER BY ${Columns.MOVIE_INSERTION_COLUMN} DESC")
     fun getMovies(): Flow<List<MovieEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

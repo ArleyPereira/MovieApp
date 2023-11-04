@@ -7,8 +7,9 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hellodev.movieapp.MainGraphDirections
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentDownloadBinding
@@ -24,6 +25,8 @@ class DownloadFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var mAdapter: DownloadMovieAdapter
+
+    private val viewModel: DownloadViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,21 @@ class DownloadFragment : Fragment() {
 
         initRecycler()
 
+        initObservers()
+
+        getData()
+
         initSearchView()
+    }
+
+    private fun getData() {
+        viewModel.getMovies()
+    }
+
+    private fun initObservers() {
+        viewModel.movieList.observe(viewLifecycleOwner) { movies ->
+            mAdapter.submitList(movies)
+        }
     }
 
     private fun initSearchView() {
@@ -102,7 +119,7 @@ class DownloadFragment : Fragment() {
         )
 
         with(binding.rvMovies) {
-            layoutManager = GridLayoutManager(requireContext(), 2)
+            layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             adapter = mAdapter
         }

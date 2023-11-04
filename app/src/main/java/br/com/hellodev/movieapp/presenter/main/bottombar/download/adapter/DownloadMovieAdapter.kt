@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hellodev.movieapp.databinding.MovieDownloadItemBinding
 import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.util.calculateFileSize
+import br.com.hellodev.movieapp.util.calculateMovieTime
 import com.bumptech.glide.Glide
 
 class DownloadMovieAdapter(
@@ -53,8 +55,8 @@ class DownloadMovieAdapter(
             .into(holder.binding.ivMovie)
 
         holder.binding.textMovie.text = movie.title
-        holder.binding.textDuration.text = movie.runtime.toString()
-        holder.binding.textSize.text = movie.runtime.toString()
+        holder.binding.textDuration.text = movie.runtime?.calculateMovieTime()
+        holder.binding.textSize.text = movie.runtime?.toDouble()?.calculateFileSize()
         holder.binding.ibDelete.setOnClickListener { deleteClickListener(movie.id) }
 
         holder.itemView.setOnClickListener { detailsClickListener(movie.id) }
