@@ -82,9 +82,10 @@
         <item name="android:inputType">textCapSentences</item>
     </style>
 
-    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="CustomAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.MinWidth">
         <item name="android:windowBackground">@drawable/bg_dialog</item>
-        <item name="android:windowMinWidthMinor">80%</item>
+        <item name="android:windowMinWidthMajor">85%</item>
+        <item name="android:windowMinWidthMinor">85%</item>
     </style>
 
     <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">

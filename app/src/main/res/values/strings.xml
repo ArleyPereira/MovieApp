@@ -95,7 +95,7 @@
     <string name="text_title_bottom_sheet_delete_movie">Deletar</string>
     <string name="text_message_bottom_sheet_delete_movie">Tem certeza de que deseja excluir o download deste filme?</string>
     <string name="text_cancel_button_bottom_sheet_delete_movie">Cancelar</string>
-    <string name="text_confirm_button_message_bottom_sheet_delete_movie">Sim, deletar</string>
+    <string name="text_confirm_button_bottom_sheet_delete_movie">Sim, deletar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
