@@ -83,6 +83,8 @@
 
     <!--    DownloadFragment-->
     <string name="text_title_download_fragment">Downloads</string>
+    <string name="text_title_empty_state_download_fragment">Sua lista está vazia</string>
+    <string name="text_message_empty_state_download_fragment">Parece que você não realizou o download de nenhum filme.</string>
 
     <!--    DialogDownloading-->
     <string name="text_title_dialog_downloading">Download</string>
