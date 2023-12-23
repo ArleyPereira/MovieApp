@@ -2,21 +2,21 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("com.google.gms.google-services")
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 
-@Suppress("UnstableApiUsage")
 android {
+    namespace = "br.com.hellodev.movieapp"
     compileSdk = 34
 
     defaultConfig {
         applicationId = "br.com.hellodev.movieapp"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -37,15 +37,16 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Retrofit
@@ -68,7 +69,7 @@ dependencies {
 
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:${Versions.hiltVersion}")
-    kapt("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
+    ksp("com.google.dagger:hilt-compiler:${Versions.hiltVersion}")
 
     // Lifecycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}")
@@ -80,7 +81,7 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:${Versions.glideVersion}")
-    annotationProcessor("com.github.bumptech.glide:compiler:${Versions.glideVersion}")
+    ksp("com.github.bumptech.glide:ksp:${Versions.glideVersion}")
 
     // SimpleSearchView
     implementation("com.github.Ferfalk:SimpleSearchView:0.2.0")
@@ -88,7 +89,7 @@ dependencies {
     // Room
     implementation("androidx.room:room-ktx:${Versions.roomVersion}")
     implementation("androidx.room:room-runtime:${Versions.roomVersion}")
-    kapt("androidx.room:room-compiler:${Versions.roomVersion}")
+    ksp("androidx.room:room-compiler:${Versions.roomVersion}")
 
     // Test
     testImplementation("junit:junit:4.13.2")

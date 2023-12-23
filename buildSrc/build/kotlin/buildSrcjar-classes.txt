@@ -1,1 +1,0 @@
-/Users/arley/AndroidStudioProjects/Curso/Kotlin/MovieApp/buildSrc/build/classes/kotlin/main/Versions.class
