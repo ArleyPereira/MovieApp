@@ -2,13 +2,17 @@ package br.com.hellodev.movieapp.presenter.main.moviegenre
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import androidx.paging.PagingData
 import br.com.hellodev.movieapp.BuildConfig
+import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMoviesByGenreUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.SearchMoviesUseCase
 import br.com.hellodev.movieapp.util.Constants
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import retrofit2.HttpException
 import javax.inject.Inject
 
@@ -16,26 +20,22 @@ import javax.inject.Inject
 class MovieGenreViewModel @Inject constructor(
     private val getMoviesByGenreUseCase: GetMoviesByGenreUseCase,
     private val searchMoviesUseCase: SearchMoviesUseCase
-): ViewModel() {
+) : ViewModel() {
 
-    fun getMoviesByGenre(genreId: Int?) = liveData(Dispatchers.IO) {
-        try {
-            emit(StateView.Loading())
+    private val _movieList = MutableStateFlow<PagingData<Movie>>(PagingData.empty())
+    val movieList
+        get() = _movieList.asStateFlow()
 
-            val movies = getMoviesByGenreUseCase.invoke(
+    private var currentGenreId: Int? = null
+
+    fun initializeMoviesByGenre(genreId: Int?, forceRequest: Boolean) {
+        if (genreId != currentGenreId || forceRequest) {
+            currentGenreId = genreId
+            getMoviesByGenreUseCase(
                 apiKey = BuildConfig.API_KEY,
                 language = Constants.Movie.LANGUAGE,
                 genreId = genreId
             )
-
-            emit(StateView.Success(movies))
-
-        } catch (e: HttpException) {
-            e.printStackTrace()
-            emit(StateView.Error(message = e.message))
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emit(StateView.Error(message = e.message))
         }
     }
 
