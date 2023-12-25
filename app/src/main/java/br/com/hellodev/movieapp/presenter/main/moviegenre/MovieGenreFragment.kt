@@ -83,17 +83,20 @@ class MovieGenreFragment : Fragment() {
                 when (loadState.refresh) {
                     is LoadState.Loading -> {
                         binding.recyclerMovies.isVisible = false
-                        binding.progressBar.isVisible = true
+                        binding.shimmer.startShimmer()
+                        binding.shimmer.isVisible = true
                     }
 
                     is LoadState.NotLoading -> {
+                        binding.shimmer.stopShimmer()
+                        binding.shimmer.isVisible = false
                         binding.recyclerMovies.isVisible = true
-                        binding.progressBar.isVisible = false
                     }
 
                     is LoadState.Error -> {
                         binding.recyclerMovies.isVisible = false
-                        binding.progressBar.isVisible = false
+                        binding.shimmer.stopShimmer()
+                        binding.shimmer.isVisible = false
                         val error = (loadState.refresh as LoadState.Error).error.message
                             ?: "Ocorreu um erro. Tente novamente mais tarde."
                         Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
@@ -183,17 +186,20 @@ class MovieGenreFragment : Fragment() {
             when (stateView) {
                 is StateView.Loading -> {
                     binding.recyclerMovies.isVisible = false
-                    binding.progressBar.isVisible = true
+                    binding.shimmer.startShimmer()
+                    binding.shimmer.isVisible = true
                 }
 
                 is StateView.Success -> {
-                    binding.progressBar.isVisible = false
+                    binding.shimmer.stopShimmer()
+                    binding.shimmer.isVisible = false
                     getMoviesByGenre(forceRequest = true)
                     binding.recyclerMovies.isVisible = true
                 }
 
                 is StateView.Error -> {
-                    binding.progressBar.isVisible = false
+                    binding.shimmer.stopShimmer()
+                    binding.shimmer.isVisible = false
                 }
             }
         }

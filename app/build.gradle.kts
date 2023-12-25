@@ -94,6 +94,9 @@ dependencies {
     // Paging
     implementation("androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}")
 
+    // Shimmer
+    implementation("com.facebook.shimmer:shimmer:${Versions.shimmerVersion}")
+
     // Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

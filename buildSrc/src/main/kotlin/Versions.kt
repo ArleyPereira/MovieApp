@@ -12,4 +12,5 @@ object Versions {
     const val googleServicesVersion = "4.3.15"
     const val roomVersion = "2.6.1"
     const val pagingVersion = "3.2.1"
+    const val shimmerVersion = "0.5.0"
 }
