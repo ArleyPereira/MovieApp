@@ -12,4 +12,9 @@ class Constants {
         const val MOVIE_GENRE_SCREEN = "MOVIE_GENRE_SCREEN"
     }
 
+    object Paging {
+        const val NETWORK_PAGE_SIZE = 20
+        const val DEFAULT_PAGE_INDEX = 1
+    }
+
 }

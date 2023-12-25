@@ -11,4 +11,5 @@ object Versions {
     const val secretsGradleVersion = "2.0.1"
     const val googleServicesVersion = "4.3.15"
     const val roomVersion = "2.6.1"
+    const val pagingVersion = "3.2.1"
 }

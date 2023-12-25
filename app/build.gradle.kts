@@ -91,6 +91,9 @@ dependencies {
     implementation("androidx.room:room-runtime:${Versions.roomVersion}")
     ksp("androidx.room:room-compiler:${Versions.roomVersion}")
 
+    // Paging
+    implementation("androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}")
+
     // Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
