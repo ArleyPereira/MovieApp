@@ -1,7 +1,6 @@
 package br.com.hellodev.movieapp.presenter.main.bottombar.home;
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -76,7 +75,7 @@ class HomeFragment : Fragment() {
                     }
 
                     is StateView.Success -> {
-                        genreMutableList[index] = genre.copy(movies = stateView.data?.take(5))
+                        //genreMutableList[index] = genre.copy(movies = stateView.data?.take(5))
                         lifecycleScope.launch {
                             delay(1000)
                             genreMovieAdapter.submitList(genreMutableList)
