@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hellodev.movieapp.databinding.MovieGenreItemBinding
 import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.util.circularProgressDrawable
 import com.bumptech.glide.Glide
 
 class MoviePagingAdapter(
@@ -49,6 +50,7 @@ class MoviePagingAdapter(
         Glide
             .with(context)
             .load("https://image.tmdb.org/t/p/w500${movie?.posterPath}")
+            .placeholder(context.circularProgressDrawable())
             .into(holder.binding.movieImage)
 
         holder.itemView.setOnClickListener { movieClickListener(movie?.id) }
