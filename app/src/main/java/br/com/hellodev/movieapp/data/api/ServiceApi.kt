@@ -30,6 +30,7 @@ interface ServiceApi {
         @Query("api_key") apiKey: String?,
         @Query("language") language: String?,
         @Query("query") query: String?,
+        @Query("page") page: Int?,
     ): BasePaginationRemote<List<MovieResponse>>
 
     @GET("movie/{movie_id}")

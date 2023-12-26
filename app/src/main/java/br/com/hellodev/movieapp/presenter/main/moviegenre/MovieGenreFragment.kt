@@ -21,7 +21,6 @@ import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentMovieGenreBinding
 import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.LoadStatePagingAdapter
 import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.MoviePagingAdapter
-import br.com.hellodev.movieapp.util.StateView
 import br.com.hellodev.movieapp.util.hideKeyboard
 import br.com.hellodev.movieapp.util.initToolbar
 import com.ferfalk.simplesearchview.SimpleSearchView
@@ -105,7 +104,6 @@ class MovieGenreFragment : Fragment() {
             }
         }
 
-
         with(binding.recyclerMovies) {
             setHasFixedSize(true)
 
@@ -182,25 +180,9 @@ class MovieGenreFragment : Fragment() {
     }
 
     private fun searchMovies(query: String?) {
-        viewModel.searchMovies(query).observe(viewLifecycleOwner) { stateView ->
-            when (stateView) {
-                is StateView.Loading -> {
-                    binding.recyclerMovies.isVisible = false
-                    binding.shimmer.startShimmer()
-                    binding.shimmer.isVisible = true
-                }
-
-                is StateView.Success -> {
-                    binding.shimmer.stopShimmer()
-                    binding.shimmer.isVisible = false
-                    getMoviesByGenre(forceRequest = true)
-                    binding.recyclerMovies.isVisible = true
-                }
-
-                is StateView.Error -> {
-                    binding.shimmer.stopShimmer()
-                    binding.shimmer.isVisible = false
-                }
+        lifecycleScope.launch {
+            viewModel.searchMovies(query).collectLatest { pagingData ->
+                moviePagingAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
             }
         }
     }

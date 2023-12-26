@@ -14,10 +14,10 @@ interface MovieRepository {
         genreId: Int?
     ): PagingSource<Int, MovieResponse>
 
-    suspend fun searchMovies(
+    fun searchMovies(
         apiKey: String?,
         language: String?,
         query: String?
-    ): List<MovieResponse>
+    ): PagingSource<Int, MovieResponse>
 
 }
