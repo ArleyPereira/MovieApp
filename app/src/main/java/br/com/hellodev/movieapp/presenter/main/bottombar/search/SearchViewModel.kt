@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hellodev.movieapp.BuildConfig
 import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.domain.usecase.movie.SearchMoviesUseCase
-import br.com.hellodev.movieapp.util.Constants
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -31,11 +29,7 @@ class SearchViewModel @Inject constructor(
             try {
                 _searchState.postValue(StateView.Loading())
 
-                val movies = searchMoviesUseCase(
-                    apiKey = BuildConfig.API_KEY,
-                    language = Constants.Movie.LANGUAGE,
-                    query = query
-                )
+                val movies = searchMoviesUseCase(query = query)
 
                 //_movieList.postValue(movies)
                 _searchState.postValue(StateView.Success(Unit))

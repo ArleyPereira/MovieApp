@@ -4,12 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import br.com.hellodev.movieapp.BuildConfig
 import br.com.hellodev.movieapp.domain.local.usecase.InsertMovieUseCase
 import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.domain.usecase.movie.GetCreditsUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMovieDetailsUseCase
-import br.com.hellodev.movieapp.util.Constants
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -30,11 +28,7 @@ class MovieDetailsViewModel @Inject constructor(
         try {
             emit(StateView.Loading())
 
-            val result = getMovieDetailsUseCase.invoke(
-                apiKey = BuildConfig.API_KEY,
-                language = Constants.Movie.LANGUAGE,
-                movieId = movieId
-            )
+            val result = getMovieDetailsUseCase.invoke(movieId = movieId)
 
             emit(StateView.Success(result))
 
@@ -51,11 +45,7 @@ class MovieDetailsViewModel @Inject constructor(
         try {
             emit(StateView.Loading())
 
-            val result = getCreditsUseCase(
-                apiKey = BuildConfig.API_KEY,
-                language = Constants.Movie.LANGUAGE,
-                movieId = movieId
-            )
+            val result = getCreditsUseCase(movieId = movieId)
 
             emit(StateView.Success(result))
 

@@ -2,10 +2,8 @@ package br.com.hellodev.movieapp.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import br.com.hellodev.movieapp.BuildConfig
 import br.com.hellodev.movieapp.data.api.ServiceApi
 import br.com.hellodev.movieapp.data.model.MovieResponse
-import br.com.hellodev.movieapp.util.Constants
 import br.com.hellodev.movieapp.util.Constants.Paging.DEFAULT_PAGE_INDEX
 
 class MovieByGenrePagingSource(
@@ -19,8 +17,6 @@ class MovieByGenrePagingSource(
         return try {
             val page = params.key ?: DEFAULT_PAGE_INDEX
             val result = serviceApi.getMoviesByGenre(
-                apiKey = BuildConfig.API_KEY,
-                language = Constants.Movie.LANGUAGE,
                 genreId = genreId,
                 page = page
             ).results ?: emptyList()

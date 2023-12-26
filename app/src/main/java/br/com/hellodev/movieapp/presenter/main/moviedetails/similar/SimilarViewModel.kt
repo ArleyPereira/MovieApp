@@ -2,9 +2,7 @@ package br.com.hellodev.movieapp.presenter.main.moviedetails.similar
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import br.com.hellodev.movieapp.BuildConfig
 import br.com.hellodev.movieapp.domain.usecase.movie.GetSimilarUseCase
-import br.com.hellodev.movieapp.util.Constants.Movie
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -20,11 +18,7 @@ class SimilarViewModel @Inject constructor(
         try {
             emit(StateView.Loading())
 
-            val movies = getSimilarUseCase(
-                apiKey = BuildConfig.API_KEY,
-                language = Movie.LANGUAGE,
-                movieId = movieId
-            )
+            val movies = getSimilarUseCase(movieId = movieId)
 
             emit(StateView.Success(movies))
 

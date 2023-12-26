@@ -16,22 +16,14 @@ class SearchMoviesUseCase @Inject constructor(
     private val repository: MovieRepository
 ) {
 
-    operator fun invoke(
-        apiKey: String,
-        language: String?,
-        query: String?
-    ): Flow<PagingData<Movie>> = Pager(
+    operator fun invoke(query: String?): Flow<PagingData<Movie>> = Pager(
         config = PagingConfig(
             pageSize = Constants.Paging.NETWORK_PAGE_SIZE,
             enablePlaceholders = false,
             initialLoadSize = Constants.Paging.DEFAULT_PAGE_INDEX
         ),
         pagingSourceFactory = {
-            repository.searchMovies(
-                apiKey = apiKey,
-                language = language,
-                query = query
-            )
+            repository.searchMovies(query = query)
         }
     ).flow.map { pagingData ->
         pagingData.map { movieResponse ->

@@ -4,11 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import br.com.hellodev.movieapp.BuildConfig
 import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMoviesByGenreUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.SearchMoviesUseCase
-import br.com.hellodev.movieapp.util.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,22 +30,14 @@ class MovieGenreViewModel @Inject constructor(
     fun getMoviesByGenre(genreId: Int?, forceRequest: Boolean) = viewModelScope.launch {
         if (genreId != currentGenreId || forceRequest) {
             currentGenreId = genreId
-            getMoviesByGenreUseCase(
-                apiKey = BuildConfig.API_KEY,
-                language = Constants.Movie.LANGUAGE,
-                genreId = genreId
-            ).cachedIn(viewModelScope).collectLatest {
+            getMoviesByGenreUseCase(genreId = genreId).cachedIn(viewModelScope).collectLatest {
                 _movieList.emit(it)
             }
         }
     }
 
     fun searchMovies(query: String?): Flow<PagingData<Movie>>  {
-        return searchMoviesUseCase(
-            apiKey = BuildConfig.API_KEY,
-            language = Constants.Movie.LANGUAGE,
-            query = query
-        ).cachedIn(viewModelScope)
+        return searchMoviesUseCase(query = query).cachedIn(viewModelScope)
     }
 
 }

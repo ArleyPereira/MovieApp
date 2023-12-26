@@ -2,9 +2,7 @@ package br.com.hellodev.movieapp.presenter.main.moviedetails.comments
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import br.com.hellodev.movieapp.BuildConfig
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMovieReviewsUseCase
-import br.com.hellodev.movieapp.util.Constants
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -20,11 +18,7 @@ class CommentsViewModel @Inject constructor(
         try {
             emit(StateView.Loading())
 
-            val movies = getMovieReviewsUseCase(
-                apiKey = BuildConfig.API_KEY,
-                language = Constants.Movie.LANGUAGE_ENGLISH,
-                movieId = movieId
-            )
+            val movies = getMovieReviewsUseCase(movieId = movieId)
 
             emit(StateView.Success(movies))
 
