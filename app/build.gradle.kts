@@ -61,6 +61,9 @@ dependencies {
     // Splash API
     implementation("androidx.core:core-splashscreen:${Versions.splashVersion}")
 
+    // Lottie
+    implementation("com.airbnb.android:lottie:${Versions.lottieVersion}")
+
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:31.2.2"))
     implementation("com.google.firebase:firebase-auth-ktx")
