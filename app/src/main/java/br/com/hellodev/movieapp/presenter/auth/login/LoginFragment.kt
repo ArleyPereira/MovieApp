@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener { validateData() }
 
         binding.btnForgot.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_forgotFragment)
+            findNavController().onNavigate(R.id.action_loginFragment_to_forgotFragment)
         }
 
         Glide

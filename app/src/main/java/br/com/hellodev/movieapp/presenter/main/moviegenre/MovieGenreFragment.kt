@@ -23,6 +23,7 @@ import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.LoadStatePagin
 import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.MoviePagingAdapter
 import br.com.hellodev.movieapp.util.hideKeyboard
 import br.com.hellodev.movieapp.util.initToolbar
+import br.com.hellodev.movieapp.util.onNavigate
 import com.ferfalk.simplesearchview.SimpleSearchView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -72,7 +73,7 @@ class MovieGenreFragment : Fragment() {
                 movieId?.let {
                     val action = MainGraphDirections
                         .actionGlobalMovieDetailsFragment(movieId)
-                    findNavController().navigate(action)
+                    findNavController().onNavigate(action)
                 }
             }
         )

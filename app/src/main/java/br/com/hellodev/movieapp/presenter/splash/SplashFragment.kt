@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentSplashBinding
+import br.com.hellodev.movieapp.util.onNavigate
 
 class SplashFragment : Fragment() {
 
@@ -34,7 +35,7 @@ class SplashFragment : Fragment() {
     private fun initSplashScreen() {
         Handler(Looper.getMainLooper()).postDelayed({
             run {
-                findNavController().navigate(R.id.action_splashFragment_to_onboardingFragment)
+                findNavController().onNavigate(R.id.action_splashFragment_to_onboardingFragment)
             }
         }, 3000)
     }

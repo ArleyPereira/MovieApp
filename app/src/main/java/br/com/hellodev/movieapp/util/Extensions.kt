@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import br.com.hellodev.movieapp.R
 import com.google.android.material.snackbar.Snackbar
@@ -20,7 +23,7 @@ fun Fragment.initToolbar(
     showIconNavigation: Boolean = true,
     lightIcon: Boolean = false
 ) {
-    val iconBack = if(lightIcon) R.drawable.ic_back_white else R.drawable.ic_back
+    val iconBack = if (lightIcon) R.drawable.ic_back_white else R.drawable.ic_back
 
     (activity as AppCompatActivity).setSupportActionBar(toolbar)
     (activity as AppCompatActivity).title = ""
@@ -68,7 +71,8 @@ fun formatCommentDate(date: String?): String {
 
     val yearDifference = calendarCurrent.get(Calendar.YEAR) - calendarProvided.get(Calendar.YEAR)
     val monthDifference = calendarCurrent.get(Calendar.MONTH) - calendarProvided.get(Calendar.MONTH)
-    val dayDifference = calendarCurrent.get(Calendar.DAY_OF_MONTH) - calendarProvided.get(Calendar.DAY_OF_MONTH)
+    val dayDifference =
+        calendarCurrent.get(Calendar.DAY_OF_MONTH) - calendarProvided.get(Calendar.DAY_OF_MONTH)
 
     val totalDaysDifference = yearDifference * 365 + monthDifference * 30 + dayDifference
 
@@ -116,3 +120,52 @@ fun Context.circularProgressDrawable(): Drawable {
         start()
     }
 }
+
+fun NavController.onNavigate(action: Int) {
+    this.navigate(
+        action,
+        null,
+        NavOptions.Builder()
+            .setEnterAnim(R.anim.enter)
+            .setExitAnim(R.anim.exit)
+            .setPopEnterAnim(R.anim.pop_enter)
+            .setPopExitAnim(R.anim.pop_exit)
+            .build()
+    )
+}
+
+fun NavController.onNavigate(nav: NavDirections) {
+    this.navigate(
+        nav.actionId,
+        nav.arguments,
+        NavOptions.Builder()
+            .setEnterAnim(R.anim.enter)
+            .setExitAnim(R.anim.exit)
+            .setPopEnterAnim(R.anim.pop_enter)
+            .setPopExitAnim(R.anim.pop_exit)
+            .build()
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

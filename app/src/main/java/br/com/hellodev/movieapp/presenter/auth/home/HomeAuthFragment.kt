@@ -1,13 +1,14 @@
 package br.com.hellodev.movieapp.presenter.auth.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentHomeAuthBinding
+import br.com.hellodev.movieapp.util.onNavigate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,11 +34,11 @@ class HomeAuthFragment : Fragment() {
 
     private fun initListeners() {
         binding.btnLoginWithPassword.setOnClickListener {
-            findNavController().navigate(R.id.action_homeAuthFragment_to_loginFragment)
+            findNavController().onNavigate(R.id.action_homeAuthFragment_to_loginFragment)
         }
 
         binding.btnRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_homeAuthFragment_to_registerFragment)
+            findNavController().onNavigate(R.id.action_homeAuthFragment_to_registerFragment)
         }
     }
 
