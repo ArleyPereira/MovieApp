@@ -15,7 +15,6 @@ import br.com.hellodev.movieapp.domain.model.Genre
 import br.com.hellodev.movieapp.domain.model.Movie
 import br.com.hellodev.movieapp.domain.model.MovieReview
 import br.com.hellodev.movieapp.domain.model.Person
-import br.com.hellodev.movieapp.presenter.model.GenrePresentation
 
 fun GenreResponse.toDomain(): Genre {
     return Genre(
@@ -42,14 +41,6 @@ fun MovieResponse.toDomain(): Movie {
         voteCount = voteCount,
         productionCountries = productionCountries?.map { it.toDomain() },
         runtime = runtime
-    )
-}
-
-fun Genre.toPresentation(): GenrePresentation {
-    return GenrePresentation(
-        id = id,
-        name = name,
-        movies = emptyList()
     )
 }
 
