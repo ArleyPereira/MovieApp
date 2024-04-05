@@ -1,7 +1,6 @@
 package br.com.hellodev.movieapp.presenter.main.moviegenre
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -141,12 +140,10 @@ class MovieGenreFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                Log.d("SimpleSearchView", "Text changed:$newText")
                 return false
             }
 
             override fun onQueryTextCleared(): Boolean {
-                Log.d("SimpleSearchView", "Text cleared")
                 return false
             }
         })
@@ -154,7 +151,6 @@ class MovieGenreFragment : Fragment() {
         binding.simpleSearchView.setOnSearchViewListener(object :
             SimpleSearchView.SearchViewListener {
             override fun onSearchViewShown() {
-                Log.d("SimpleSearchView", "onSearchViewShown")
             }
 
             override fun onSearchViewClosed() {
@@ -162,11 +158,9 @@ class MovieGenreFragment : Fragment() {
             }
 
             override fun onSearchViewShownAnimation() {
-                Log.d("SimpleSearchView", "onSearchViewShownAnimation")
             }
 
             override fun onSearchViewClosedAnimation() {
-                Log.d("SimpleSearchView", "onSearchViewClosedAnimation")
             }
         })
     }
