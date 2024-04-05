@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import br.com.hellodev.movieapp.domain.model.Movie
-import br.com.hellodev.movieapp.domain.usecase.movie.GetMoviesByGenreUseCase
+import br.com.hellodev.movieapp.domain.usecase.movie.GetMoviesByGenrePaginationUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.SearchMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieGenreViewModel @Inject constructor(
-    private val getMoviesByGenreUseCase: GetMoviesByGenreUseCase,
+    private val getMoviesByGenrePaginationUseCase: GetMoviesByGenrePaginationUseCase,
     private val searchMoviesUseCase: SearchMoviesUseCase
 ) : ViewModel() {
 
@@ -27,10 +27,10 @@ class MovieGenreViewModel @Inject constructor(
 
     private var currentGenreId: Int? = null
 
-    fun getMoviesByGenre(genreId: Int?, forceRequest: Boolean) = viewModelScope.launch {
+    fun getMoviesByGenrePagination(genreId: Int?, forceRequest: Boolean) = viewModelScope.launch {
         if (genreId != currentGenreId || forceRequest) {
             currentGenreId = genreId
-            getMoviesByGenreUseCase(genreId = genreId).cachedIn(viewModelScope).collectLatest {
+            getMoviesByGenrePaginationUseCase(genreId = genreId).cachedIn(viewModelScope).collectLatest {
                 _movieList.emit(it)
             }
         }

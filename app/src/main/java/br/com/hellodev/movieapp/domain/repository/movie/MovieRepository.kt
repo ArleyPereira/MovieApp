@@ -8,7 +8,9 @@ interface MovieRepository {
 
     suspend fun getGenres(): GenresResponse
 
-    fun getMoviesByGenre(genreId: Int?): PagingSource<Int, MovieResponse>
+    fun getMoviesByGenrePagination(genreId: Int?): PagingSource<Int, MovieResponse>
+
+    suspend fun getMoviesByGenre(genreId: Int?): List<MovieResponse>?
 
     fun searchMovies(query: String?): PagingSource<Int, MovieResponse>
 

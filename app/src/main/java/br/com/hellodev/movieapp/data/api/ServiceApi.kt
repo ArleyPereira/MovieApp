@@ -15,9 +15,14 @@ interface ServiceApi {
     suspend fun getGenres(): GenresResponse
 
     @GET("discover/movie")
-    suspend fun getMoviesByGenre(
+    suspend fun getMoviesByGenrePagination(
         @Query("with_genres") genreId: Int?,
         @Query("page") page: Int?,
+    ): BasePaginationRemote<List<MovieResponse>>
+
+    @GET("discover/movie")
+    suspend fun getMoviesByGenre(
+        @Query("with_genres") genreId: Int?
     ): BasePaginationRemote<List<MovieResponse>>
 
     @GET("search/movie")
