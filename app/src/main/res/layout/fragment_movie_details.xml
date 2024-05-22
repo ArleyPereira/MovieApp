@@ -235,7 +235,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/color_default"
                     app:backgroundTint="@null"
-                    app:icon="@drawable/ic_download"
+                    app:icon="@drawable/ic_download_fill"
                     app:iconGravity="textStart"
                     app:iconTint="@color/color_default" />
 
