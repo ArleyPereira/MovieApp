@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentProfileBinding
 import br.com.hellodev.movieapp.domain.model.MenuProfile
 import br.com.hellodev.movieapp.domain.model.MenuProfileType
 import br.com.hellodev.movieapp.presenter.main.bottombar.profile.adapter.ProfileMenuAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileFragment : Fragment() {
 
@@ -43,7 +45,7 @@ class ProfileFragment : Fragment() {
             onClick = { type ->
                 when (type) {
                     MenuProfileType.PROFILE -> {
-
+                        findNavController().navigate(R.id.action_menu_profile_to_editProfileFragment)
                     }
 
                     MenuProfileType.NOTIFICATION -> {
@@ -51,7 +53,8 @@ class ProfileFragment : Fragment() {
                     }
 
                     MenuProfileType.DOWNLOAD -> {
-
+                        val bottomNavigation = activity?.findViewById<BottomNavigationView>(R.id.btnv)
+                        bottomNavigation?.selectedItemId = R.id.menu_download
                     }
 
                     MenuProfileType.SECURITY -> {

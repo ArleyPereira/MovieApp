@@ -37,7 +37,11 @@
         android:id="@+id/menu_profile"
         android:name="br.com.hellodev.movieapp.presenter.main.bottombar.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_menu_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/movieGenreFragment"
@@ -61,5 +65,10 @@
             app:argType="integer" />
     </fragment>
     <action android:id="@+id/action_global_movieDetailsFragment" app:destination="@id/movieDetailsFragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="br.com.hellodev.movieapp.presenter.main.bottombar.profile.edit.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 
 </navigation>
