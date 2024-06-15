@@ -93,7 +93,7 @@
     <string name="text_downloaded_size_dialog_downloading">%1$s / %2$s</string>
     <string name="text_download_progress_dialog_downloading">%1$d%%</string>
 
-    <!--    bottomSheetDeleteMovie-->
+    <!--    BottomSheetDeleteMovie-->
     <string name="text_title_bottom_sheet_delete_movie">Deletar</string>
     <string name="text_message_bottom_sheet_delete_movie">Tem certeza de que deseja excluir o download deste filme?</string>
     <string name="text_cancel_button_bottom_sheet_delete_movie">Cancelar</string>
@@ -109,6 +109,29 @@
     <string name="text_helper_profile_fragment">Centro de ajuda</string>
     <string name="text_privacy_policy_profile_fragment">Política de privacidade</string>
     <string name="text_logout_profile_fragment">Sair</string>
+
+    <!--    EditProfileFragment - XML-->
+    <string name="text_title_edit_profile_fragment">Editar perfil</string>
+    <string name="text_hint_edit_name_edit_profile_fragment">nome</string>
+    <string name="text_hint_edit_surname_edit_profile_fragment">sobrenome</string>
+    <string name="text_hint_edit_phone_edit_profile_fragment">telefone</string>
+    <string name="text_hint_edit_genre_edit_profile_fragment">gênero</string>
+    <string name="text_hint_edit_country_edit_profile_fragment">país</string>
+    <string name="text_button_update_edit_profile_fragment">Atualizar</string>
+
+    <!--    EditProfileFragment-->
+    <string name="text_name_empty_edit_profile_fragment">Digite seu nome</string>
+    <string name="text_surname_empty_edit_profile_fragment">Digite seu sobrenome</string>
+    <string name="text_phone_empty_edit_profile_fragment">Digite seu telefone</string>
+    <string name="text_phone_invalid_edit_profile_fragment">Digite um telefone válido</string>
+    <string name="text_genre_empty_edit_profile_fragment">Digite seu gênero</string>
+    <string name="text_country_empty_edit_profile_fragment">Digite seu país</string>
+
+    <!--    BottomSheetLogout-->
+    <string name="text_title_bottom_sheet_logout">Sair</string>
+    <string name="text_message_bottom_sheet_logout">Tem certeza de que deseja sair?</string>
+    <string name="text_cancel_button_bottom_sheet_logout">Cancelar</string>
+    <string name="text_confirm_button_bottom_sheet_logout">Sim, sair</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

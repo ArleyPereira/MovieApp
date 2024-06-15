@@ -1,7 +1,9 @@
 package br.com.hellodev.movieapp.util
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -13,6 +15,7 @@ import androidx.navigation.NavOptions
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import br.com.hellodev.movieapp.R
 import com.google.android.material.snackbar.Snackbar
+import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -145,6 +148,15 @@ fun NavController.onNavigate(nav: NavDirections) {
             .setPopExitAnim(R.anim.pop_exit)
             .build()
     )
+}
+
+inline fun <reified T : Serializable> Intent.getSerializableCompat(key: String): T? = when {
+    Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializableExtra(
+        key,
+        T::class.java
+    )
+
+    else -> @Suppress("DEPRECATION") getSerializableExtra(key) as? T
 }
 
 

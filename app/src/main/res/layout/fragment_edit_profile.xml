@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:fontFamily="@font/urbanist_700"
-            android:text="Editar perfil"
+            android:text="@string/text_title_edit_profile_fragment"
             android:textColor="#212121"
             android:textSize="24sp" />
 
@@ -38,7 +38,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <FrameLayout
                 android:id="@+id/frameLayout"
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
-                android:hint="nome"
+                android:hint="@string/text_hint_edit_name_edit_profile_fragment"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -91,12 +91,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
             <EditText
-                android:id="@+id/edit_last_name"
+                android:id="@+id/edit_surname"
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
-                android:hint="sobrenome"
+                android:hint="@string/text_hint_edit_surname_edit_profile_fragment"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -110,13 +110,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
-                android:hint="email"
+                android:clickable="false"
+                android:enabled="false"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
+                android:textColor="@color/disabled"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_last_name" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_surname"
+                tools:text="u1@gmail.com" />
 
             <EditText
                 android:id="@+id/edit_phone"
@@ -124,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
-                android:hint="telefone"
+                android:hint="@string/text_hint_edit_phone_edit_profile_fragment"
                 android:importantForAutofill="no"
                 android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -133,12 +136,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_email" />
 
             <EditText
-                android:id="@+id/edit_sex"
+                android:id="@+id/edit_genre"
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
-                android:hint="sexo"
+                android:hint="@string/text_hint_edit_genre_edit_profile_fragment"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -152,13 +155,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
-                android:hint="país"
+                android:hint="@string/text_hint_edit_country_edit_profile_fragment"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_sex" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_genre" />
 
             <Button
                 android:id="@+id/btn_update"
@@ -167,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="32dp"
-                android:text="Atualizar"
+                android:text="@string/text_button_update_edit_profile_fragment"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

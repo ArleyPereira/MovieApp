@@ -17,7 +17,7 @@ class LoginViewModel @Inject constructor(
         try {
             emit(StateView.Loading())
 
-            loginUseCase.invoke(email, password)
+            loginUseCase(email, password)
 
             emit(StateView.Success(Unit))
         } catch (exception: Exception) {
