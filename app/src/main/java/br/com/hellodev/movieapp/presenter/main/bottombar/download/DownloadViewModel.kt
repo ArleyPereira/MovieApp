@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hellodev.movieapp.domain.local.usecase.DeleteMovieUseCase
 import br.com.hellodev.movieapp.domain.local.usecase.GetMoviesUseCase
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

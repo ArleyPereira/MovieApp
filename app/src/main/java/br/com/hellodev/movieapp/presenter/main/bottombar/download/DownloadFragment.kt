@@ -16,7 +16,7 @@ import br.com.hellodev.movieapp.MainGraphDirections
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.BottomSheetDeleteMovieBinding
 import br.com.hellodev.movieapp.databinding.FragmentDownloadBinding
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import br.com.hellodev.movieapp.presenter.main.bottombar.download.adapter.DownloadMovieAdapter
 import br.com.hellodev.movieapp.util.calculateFileSize
 import br.com.hellodev.movieapp.util.calculateMovieTime

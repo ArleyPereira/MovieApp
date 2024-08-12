@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hellodev.movieapp.data.mapper.toDomain
-import br.com.hellodev.movieapp.domain.model.Genre
+import br.com.hellodev.movieapp.domain.model.movie.Genre
 import br.com.hellodev.movieapp.domain.usecase.movie.GetGenresUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMoviesByGenreUseCase
 import br.com.hellodev.movieapp.presenter.model.MoviesByGenre

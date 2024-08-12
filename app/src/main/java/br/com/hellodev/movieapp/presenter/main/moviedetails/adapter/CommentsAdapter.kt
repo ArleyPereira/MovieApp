@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hellodev.movieapp.R
-import br.com.hellodev.movieapp.databinding.CastItemBinding
 import br.com.hellodev.movieapp.databinding.ItemCommentReviewBinding
-import br.com.hellodev.movieapp.domain.model.MovieReview
+import br.com.hellodev.movieapp.domain.model.movie.MovieReview
 import br.com.hellodev.movieapp.util.formatCommentDate
 import com.bumptech.glide.Glide
 

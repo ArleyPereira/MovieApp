@@ -1,10 +1,10 @@
 package br.com.hellodev.movieapp.data.api
 
-import br.com.hellodev.movieapp.data.model.BasePaginationRemote
-import br.com.hellodev.movieapp.data.model.CreditResponse
-import br.com.hellodev.movieapp.data.model.GenresResponse
-import br.com.hellodev.movieapp.data.model.MovieResponse
-import br.com.hellodev.movieapp.data.model.MovieReviewResponse
+import br.com.hellodev.movieapp.data.model.movie.BasePaginationRemote
+import br.com.hellodev.movieapp.data.model.movie.CreditResponse
+import br.com.hellodev.movieapp.data.model.movie.GenresResponse
+import br.com.hellodev.movieapp.data.model.movie.MovieResponse
+import br.com.hellodev.movieapp.data.model.movie.MovieReviewResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.DialogDownloadingBinding
 import br.com.hellodev.movieapp.databinding.FragmentMovieDetailsBinding
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import br.com.hellodev.movieapp.presenter.main.moviedetails.adapter.CastAdapter
 import br.com.hellodev.movieapp.presenter.main.moviedetails.adapter.ViewPagerAdapter
 import br.com.hellodev.movieapp.presenter.main.moviedetails.comments.CommentsFragment

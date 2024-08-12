@@ -3,7 +3,7 @@ package br.com.hellodev.movieapp.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import br.com.hellodev.movieapp.data.api.ServiceApi
-import br.com.hellodev.movieapp.data.model.MovieResponse
+import br.com.hellodev.movieapp.data.model.movie.MovieResponse
 import br.com.hellodev.movieapp.util.Constants.Paging.DEFAULT_PAGE_INDEX
 
 class SearchMoviePagingSource(

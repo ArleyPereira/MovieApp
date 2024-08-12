@@ -1,20 +1,20 @@
 package br.com.hellodev.movieapp.data.mapper
 
 import br.com.hellodev.movieapp.data.local.entity.MovieEntity
-import br.com.hellodev.movieapp.data.model.AuthorDetailsResponse
-import br.com.hellodev.movieapp.data.model.CountryResponse
-import br.com.hellodev.movieapp.data.model.CreditResponse
-import br.com.hellodev.movieapp.data.model.GenreResponse
-import br.com.hellodev.movieapp.data.model.MovieResponse
-import br.com.hellodev.movieapp.data.model.MovieReviewResponse
-import br.com.hellodev.movieapp.data.model.PersonResponse
-import br.com.hellodev.movieapp.domain.model.AuthorDetails
-import br.com.hellodev.movieapp.domain.model.Country
-import br.com.hellodev.movieapp.domain.model.Credit
-import br.com.hellodev.movieapp.domain.model.Genre
-import br.com.hellodev.movieapp.domain.model.Movie
-import br.com.hellodev.movieapp.domain.model.MovieReview
-import br.com.hellodev.movieapp.domain.model.Person
+import br.com.hellodev.movieapp.data.model.movie.AuthorDetailsResponse
+import br.com.hellodev.movieapp.data.model.movie.CountryResponse
+import br.com.hellodev.movieapp.data.model.movie.CreditResponse
+import br.com.hellodev.movieapp.data.model.movie.GenreResponse
+import br.com.hellodev.movieapp.data.model.movie.MovieResponse
+import br.com.hellodev.movieapp.data.model.movie.MovieReviewResponse
+import br.com.hellodev.movieapp.data.model.movie.PersonResponse
+import br.com.hellodev.movieapp.domain.model.movie.AuthorDetails
+import br.com.hellodev.movieapp.domain.model.movie.Country
+import br.com.hellodev.movieapp.domain.model.movie.Credit
+import br.com.hellodev.movieapp.domain.model.movie.Genre
+import br.com.hellodev.movieapp.domain.model.movie.Movie
+import br.com.hellodev.movieapp.domain.model.movie.MovieReview
+import br.com.hellodev.movieapp.domain.model.movie.Person
 
 fun GenreResponse.toDomain(): Genre {
     return Genre(

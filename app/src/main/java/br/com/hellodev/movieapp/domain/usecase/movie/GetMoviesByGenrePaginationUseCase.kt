@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import br.com.hellodev.movieapp.data.mapper.toDomain
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import br.com.hellodev.movieapp.domain.repository.movie.MovieRepository
 import br.com.hellodev.movieapp.util.Constants.Paging.DEFAULT_PAGE_INDEX
 import br.com.hellodev.movieapp.util.Constants.Paging.NETWORK_PAGE_SIZE

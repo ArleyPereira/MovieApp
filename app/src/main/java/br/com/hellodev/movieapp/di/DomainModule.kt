@@ -4,10 +4,12 @@ import br.com.hellodev.movieapp.data.local.repository.MovieLocalRepositoryImpl
 import br.com.hellodev.movieapp.data.repository.auth.FirebaseAuthenticationImpl
 import br.com.hellodev.movieapp.data.repository.movie.MovieDetailsRepositoryImpl
 import br.com.hellodev.movieapp.data.repository.movie.MovieRepositoryImpl
+import br.com.hellodev.movieapp.data.repository.user.UserRepositoryImpl
 import br.com.hellodev.movieapp.domain.local.repository.MovieLocalRepository
 import br.com.hellodev.movieapp.domain.repository.auth.FirebaseAuthentication
 import br.com.hellodev.movieapp.domain.repository.movie.MovieDetailsRepository
 import br.com.hellodev.movieapp.domain.repository.movie.MovieRepository
+import br.com.hellodev.movieapp.domain.repository.user.UserRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -36,5 +38,10 @@ abstract class DomainModule {
     abstract fun bindsMovieLocalRepositoryImpl(
         movieLocalRepositoryImpl: MovieLocalRepositoryImpl
     ): MovieLocalRepository
+
+    @Binds
+    abstract fun bindsUserRepositoryImpl(
+        userRepositoryImpl: UserRepositoryImpl
+    ): UserRepository
 
 }

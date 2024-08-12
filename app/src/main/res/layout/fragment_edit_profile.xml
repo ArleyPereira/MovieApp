@@ -36,19 +36,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/frameLayout"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_marginTop="24dp">
 
                 <ImageView
                     android:id="@+id/image_edit_profile"
@@ -81,44 +79,35 @@
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
                 android:hint="@string/text_hint_edit_name_edit_profile_fragment"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/edit_surname"
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
                 android:hint="@string/text_hint_edit_surname_edit_profile_fragment"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_first_name" />
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/edit_email"
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
                 android:clickable="false"
                 android:enabled="false"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/disabled"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_surname"
                 tools:text="u1@gmail.com" />
 
             <EditText
@@ -126,57 +115,55 @@
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
                 android:hint="@string/text_hint_edit_phone_edit_profile_fragment"
                 android:importantForAutofill="no"
-                android:inputType="phone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+                android:inputType="phone" />
 
             <EditText
                 android:id="@+id/edit_genre"
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
                 android:hint="@string/text_hint_edit_genre_edit_profile_fragment"
                 android:importantForAutofill="no"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_phone" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/edit_country"
                 style="@style/ThemeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
                 android:hint="@string/text_hint_edit_country_edit_profile_fragment"
                 android:importantForAutofill="no"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_genre" />
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/btn_update"
                 style="@style/ThemePrimaryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginVertical="32dp"
-                android:text="@string/text_button_update_edit_profile_fragment"
+                android:layout_margin="24dp"
+                android:text="@string/text_button_update_edit_profile_fragment" />
+
+            <ImageView
+                android:id="@+id/progress_loading"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="32dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_country" />
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/loading"
+                tools:visibility="visible" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </ScrollView>
 

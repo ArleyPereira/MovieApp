@@ -1,4 +1,4 @@
-package br.com.hellodev.movieapp.domain.model
+package br.com.hellodev.movieapp.domain.model.menu
 
 import br.com.hellodev.movieapp.R
 

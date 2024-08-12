@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hellodev.movieapp.R
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import com.bumptech.glide.Glide
 
 class MovieAdapter(

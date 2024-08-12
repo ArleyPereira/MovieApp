@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hellodev.movieapp.databinding.MovieDownloadItemBinding
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import br.com.hellodev.movieapp.util.calculateFileSize
 import br.com.hellodev.movieapp.util.calculateMovieTime
 import com.bumptech.glide.Glide

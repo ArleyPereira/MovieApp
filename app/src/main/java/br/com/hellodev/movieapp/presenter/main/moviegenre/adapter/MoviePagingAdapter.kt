@@ -7,7 +7,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hellodev.movieapp.databinding.MovieGenreItemBinding
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import br.com.hellodev.movieapp.util.circularProgressDrawable
 import com.bumptech.glide.Glide
 

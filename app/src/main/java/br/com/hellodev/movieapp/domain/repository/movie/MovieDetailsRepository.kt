@@ -1,8 +1,8 @@
 package br.com.hellodev.movieapp.domain.repository.movie
 
-import br.com.hellodev.movieapp.data.model.CreditResponse
-import br.com.hellodev.movieapp.data.model.MovieResponse
-import br.com.hellodev.movieapp.data.model.MovieReviewResponse
+import br.com.hellodev.movieapp.data.model.movie.CreditResponse
+import br.com.hellodev.movieapp.data.model.movie.MovieResponse
+import br.com.hellodev.movieapp.data.model.movie.MovieReviewResponse
 
 interface MovieDetailsRepository {
 

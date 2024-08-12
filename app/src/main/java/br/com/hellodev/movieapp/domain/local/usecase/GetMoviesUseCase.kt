@@ -2,7 +2,7 @@ package br.com.hellodev.movieapp.domain.local.usecase
 
 import br.com.hellodev.movieapp.data.mapper.toDomain
 import br.com.hellodev.movieapp.domain.local.repository.MovieLocalRepository
-import br.com.hellodev.movieapp.domain.model.Movie
+import br.com.hellodev.movieapp.domain.model.movie.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

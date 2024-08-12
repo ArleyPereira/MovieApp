@@ -1,7 +1,7 @@
 package br.com.hellodev.movieapp.domain.usecase.movie
 
 import br.com.hellodev.movieapp.data.mapper.toDomain
-import br.com.hellodev.movieapp.domain.model.Credit
+import br.com.hellodev.movieapp.domain.model.movie.Credit
 import br.com.hellodev.movieapp.domain.repository.movie.MovieDetailsRepository
 import javax.inject.Inject
 

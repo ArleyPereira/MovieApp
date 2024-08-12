@@ -28,6 +28,7 @@
     <string name="invalid_password_register_fragment">Senha inválida, tente novamente.</string>
     <string name="email_in_use_register_fragment">Este e-mail já está em uso.</string>
     <string name="strong_password_register_fragment">Insira uma senha mais forte.</string>
+    <string name="user_not_found_register_fragment">Usuário não encontrado.</string>
 
     <!--    HomeAuthFragment-->
     <string name="title_home_auth_fragment">Entrar com</string>
@@ -126,6 +127,7 @@
     <string name="text_phone_invalid_edit_profile_fragment">Digite um telefone válido</string>
     <string name="text_genre_empty_edit_profile_fragment">Digite seu gênero</string>
     <string name="text_country_empty_edit_profile_fragment">Digite seu país</string>
+    <string name="text_update_profile_success_edit_profile_fragment">Perfil atualizado com sucesso!</string>
 
     <!--    BottomSheetLogout-->
     <string name="text_title_bottom_sheet_logout">Sair</string>
