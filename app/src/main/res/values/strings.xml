@@ -135,7 +135,14 @@
     <string name="text_cancel_button_bottom_sheet_logout">Cancelar</string>
     <string name="text_confirm_button_bottom_sheet_logout">Sim, sair</string>
 
+    <!--    BottomSheetPermissionDenied-->
+    <string name="text_title_bottom_sheet_permission_denied">Permissão negada</string>
+    <string name="text_message_bottom_sheet_permission_denied">Para acessar este recurso, você precisa aceitar a permissão.</string>
+    <string name="text_cancel_button_bottom_sheet_permission_denied">Cancelar</string>
+    <string name="text_confirm_button_bottom_sheet_permission_denied">Aceitar</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
