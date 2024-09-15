@@ -64,6 +64,8 @@ class EditProfileFragment : Fragment() {
 
         getUser()
 
+        initObservers()
+
         initListeners()
     }
 
@@ -73,56 +75,39 @@ class EditProfileFragment : Fragment() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            validateData()
+            viewModel.validateData(
+                name = binding.editFirstName.text.toString(),
+                surName = binding.editSurname.text.toString(),
+                phone = binding.editPhone.text.toString(),
+                genre = binding.editGenre.text.toString(),
+                country = binding.editCountry.text.toString()
+            )
         }
     }
 
-    private fun validateData() {
-        val name = binding.editFirstName.text.toString()
-        val surName = binding.editSurname.text.toString()
-        val phone = binding.editPhone.text.toString()
-        val genre = binding.editGenre.text.toString()
-        val country = binding.editCountry.text.toString()
-
-        if (name.isEmpty()) {
-            showSnackBar(message = R.string.text_name_empty_edit_profile_fragment)
-            return
+    private fun initObservers() {
+        viewModel.validateData.observe(viewLifecycleOwner) { (validated, stringResId) ->
+            if (!validated) {
+                stringResId?.let {
+                    showSnackBar(message = it)
+                }
+            } else {
+                update()
+            }
         }
+    }
 
-        if (surName.isEmpty()) {
-            showSnackBar(message = R.string.text_surname_empty_edit_profile_fragment)
-            return
-        }
-
-        if (phone.isEmpty()) {
-            showSnackBar(message = R.string.text_phone_empty_edit_profile_fragment)
-            return
-        }
-
-        if (genre.isEmpty()) {
-            showSnackBar(message = R.string.text_genre_empty_edit_profile_fragment)
-            return
-        }
-
-        if (country.isEmpty()) {
-            showSnackBar(message = R.string.text_country_empty_edit_profile_fragment)
-            return
-        }
-
+    private fun update() {
         val user = User(
             id = FirebaseHelper.getUserId(),
-            firstName = name,
-            surName = surName,
-            email = FirebaseHelper.getAuth().currentUser?.email,
-            phone = phone,
-            genre = genre,
-            country = country
+            firstName = binding.editFirstName.text.toString(),
+            surName = binding.editSurname.text.toString(),
+            email = binding.editEmail.text.toString(),
+            phone = binding.editPhone.text.toString(),
+            genre = binding.editGenre.text.toString(),
+            country = binding.editCountry.text.toString()
         )
 
-        update(user)
-    }
-
-    private fun update(user: User) {
         viewModel.update(user).observe(viewLifecycleOwner) { stateView ->
             when (stateView) {
                 is StateView.Loading -> {
