@@ -46,8 +46,7 @@ class EditProfileFragment : Fragment() {
     private val GALLERY_PERMISSION = Manifest.permission.READ_EXTERNAL_STORAGE
     private val CAMERA_PERMISSION = Manifest.permission.CAMERA
 
-    private var currentPhotoPath: String? = null
-    private lateinit var photoUri: Uri
+    private var currentPhotoUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -92,14 +91,19 @@ class EditProfileFragment : Fragment() {
                     showSnackBar(message = it)
                 }
             } else {
-                update()
+                if (currentPhotoUri != null) {
+                    saveUserImage()
+                } else {
+                    update()
+                }
             }
         }
     }
 
-    private fun update() {
+    private fun update(urlImage: String? = null) {
         val user = User(
             id = FirebaseHelper.getUserId(),
+            photoUrl = urlImage ?: "",
             firstName = binding.editFirstName.text.toString(),
             surName = binding.editSurname.text.toString(),
             email = binding.editEmail.text.toString(),
@@ -148,6 +152,26 @@ class EditProfileFragment : Fragment() {
                     showSnackBar(
                         message = FirebaseHelper.validError(error = stateView.message ?: "")
                     )
+                }
+            }
+        }
+    }
+
+    private fun saveUserImage() {
+        currentPhotoUri?.let {
+            viewModel.saveUserImage(it).observe(viewLifecycleOwner) { stateView ->
+                when (stateView) {
+                    is StateView.Loading -> {
+
+                    }
+
+                    is StateView.Success -> {
+                        update(stateView.data)
+                    }
+
+                    is StateView.Error -> {
+
+                    }
                 }
             }
         }
@@ -229,12 +253,12 @@ class EditProfileFragment : Fragment() {
     private fun openCamera() {
         val photoFile = createImageFile()
         photoFile?.let {
-            photoUri = FileProvider.getUriForFile(
+            currentPhotoUri = FileProvider.getUriForFile(
                 requireContext(),
                 "${requireContext().packageName}.provider",
                 it
             )
-            takePictureLauncher.launch(photoUri)
+            takePictureLauncher.launch(currentPhotoUri)
         }
     }
 
@@ -266,7 +290,6 @@ class EditProfileFragment : Fragment() {
             ".jpg",
             storageDir
         )
-        currentPhotoPath = imageFile.absolutePath
         return imageFile
     }
 
@@ -292,6 +315,7 @@ class EditProfileFragment : Fragment() {
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
+            currentPhotoUri = it
             binding.imageProfile.setImageURI(it)
         }
     }
@@ -300,13 +324,14 @@ class EditProfileFragment : Fragment() {
         ActivityResultContracts.TakePicture()
     ) { success: Boolean ->
         if (success) {
-            binding.imageProfile.setImageURI(photoUri)
+            binding.imageProfile.setImageURI(currentPhotoUri)
         }
     }
 
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             uri?.let {
+                currentPhotoUri = it
                 binding.imageProfile.setImageURI(it)
             }
         }

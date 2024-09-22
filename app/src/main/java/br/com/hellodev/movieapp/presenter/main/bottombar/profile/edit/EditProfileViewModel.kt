@@ -1,11 +1,13 @@
 package br.com.hellodev.movieapp.presenter.main.bottombar.profile.edit
 
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.domain.model.user.User
 import br.com.hellodev.movieapp.domain.usecase.user.GetUserUseCase
+import br.com.hellodev.movieapp.domain.usecase.user.SaveUserImageUseCase
 import br.com.hellodev.movieapp.domain.usecase.user.UserUpdateUseCase
 import br.com.hellodev.movieapp.util.StateView
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class EditProfileViewModel @Inject constructor(
     private val userUpdateUseCase: UserUpdateUseCase,
-    private val getUSerUseCase: GetUserUseCase
+    private val getUSerUseCase: GetUserUseCase,
+    private val saveUserImageUseCase: SaveUserImageUseCase
 ) : ViewModel() {
 
     private val _validateData = MutableLiveData<Pair<Boolean, Int?>>()
@@ -41,6 +44,19 @@ class EditProfileViewModel @Inject constructor(
             val user = getUSerUseCase()
 
             emit(StateView.Success(user))
+        } catch (exception: Exception) {
+            exception.printStackTrace()
+            emit(StateView.Error(message = exception.message))
+        }
+    }
+
+    fun saveUserImage(uri: Uri) = liveData(Dispatchers.IO) {
+        try {
+            emit(StateView.Loading())
+
+            val url = saveUserImageUseCase(uri)
+
+            emit(StateView.Success(url))
         } catch (exception: Exception) {
             exception.printStackTrace()
             emit(StateView.Error(message = exception.message))

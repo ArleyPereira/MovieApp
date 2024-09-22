@@ -1,19 +1,28 @@
 package br.com.hellodev.movieapp.data.repository.user
 
+import android.net.Uri
 import br.com.hellodev.movieapp.domain.model.user.User
 import br.com.hellodev.movieapp.domain.repository.user.UserRepository
 import br.com.hellodev.movieapp.util.FirebaseHelper
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import javax.inject.Inject
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 class UserRepositoryImpl @Inject constructor(
-    private val firebaseDatabase: FirebaseDatabase
+    firebaseDatabase: FirebaseDatabase,
+    firebaseStorage: FirebaseStorage
 ) : UserRepository {
 
     private val profileRef = firebaseDatabase.reference
         .child("profile")
+
+    private val profileImageRef = firebaseStorage.reference
+        .child("images")
+        .child("profiles")
+        .child(FirebaseHelper.getUserId())
+        .child("image_profile.jpeg")
 
     override suspend fun update(user: User) {
         return suspendCoroutine { continuation ->
@@ -29,6 +38,28 @@ class UserRepositoryImpl @Inject constructor(
                         }
                     }
                 }
+        }
+    }
+
+    override suspend fun saveUserImage(uri: Uri): String {
+        return suspendCoroutine { continuation ->
+            val uploadTask = profileImageRef.putFile(uri)
+            uploadTask.addOnProgressListener { taskSnapshot ->
+                val progress = (100.0 * taskSnapshot.bytesTransferred) / taskSnapshot.totalByteCount
+            }.addOnSuccessListener {
+                profileImageRef.downloadUrl.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val downloadUri = task.result.toString()
+                        continuation.resumeWith(Result.success(downloadUri))
+                    } else {
+                        task.exception?.let {
+                            continuation.resumeWith(Result.failure(it))
+                        }
+                    }
+                }
+            }.addOnFailureListener {
+                continuation.resumeWithException(it)
+            }
         }
     }
 
