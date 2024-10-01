@@ -5,26 +5,36 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.BottomSheetLogoutBinding
 import br.com.hellodev.movieapp.databinding.FragmentProfileBinding
 import br.com.hellodev.movieapp.domain.model.menu.MenuProfile
 import br.com.hellodev.movieapp.domain.model.menu.MenuProfileType
+import br.com.hellodev.movieapp.domain.model.user.User
 import br.com.hellodev.movieapp.presenter.auth.activity.AuthActivity
 import br.com.hellodev.movieapp.presenter.auth.activity.AuthActivity.Companion.AUTHENTICATION_PARAMETER
 import br.com.hellodev.movieapp.presenter.auth.enums.AuthenticationDestinations
 import br.com.hellodev.movieapp.presenter.main.bottombar.profile.adapter.ProfileMenuAdapter
+import br.com.hellodev.movieapp.util.FirebaseHelper
+import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.showSnackBar
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ProfileViewModel by viewModels()
 
     private lateinit var mAdapter: ProfileMenuAdapter
 
@@ -40,7 +50,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        configData()
+        getUser()
 
         initRecycler()
     }
@@ -98,16 +108,49 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun configData() {
-        binding.imageProfile.setImageDrawable(
-            ContextCompat.getDrawable(
-                requireContext(),
-                R.drawable.person_placeholder
-            )
+    private fun configData(user: User) {
+        binding.textUsername.text = getString(
+            R.string.text_user_full_name_profile_fragment,
+            user.firstName,
+            user.surName
         )
+        binding.textEmail.text = FirebaseHelper.getAuth().currentUser?.email
 
-        binding.textUsername.text = "Arley Santana"
-        binding.textEmail.text = "andrew_ainsley@yourdomain.com"
+        binding.textPhotoEmpty.isVisible = user.photoUrl?.isEmpty() == true
+        binding.imageProfile.isVisible = user.photoUrl?.isNotEmpty() == true
+
+        if (user.photoUrl?.isNotEmpty() == true) {
+            Glide
+                .with(requireContext())
+                .load(user.photoUrl)
+                .into(binding.imageProfile)
+        } else {
+            binding.textPhotoEmpty.text = getString(
+                R.string.text_user_full_name_profile_fragment,
+                user.firstName?.first(),
+                user.surName?.first()
+            )
+        }
+    }
+
+    private fun getUser() {
+        viewModel.getUser().observe(viewLifecycleOwner) { stateView ->
+            when (stateView) {
+                is StateView.Loading -> {}
+
+                is StateView.Success -> {
+                    stateView.data?.let {
+                        configData(user = it)
+                    }
+                }
+
+                is StateView.Error -> {
+                    showSnackBar(
+                        message = FirebaseHelper.validError(error = stateView.message ?: "")
+                    )
+                }
+            }
+        }
     }
 
     private fun showBottomSheetLogout() {

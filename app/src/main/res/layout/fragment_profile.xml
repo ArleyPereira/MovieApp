@@ -63,11 +63,21 @@
                     android:layout_height="match_parent"
                     app:cardCornerRadius="60dp">
 
+                    <TextView
+                        android:id="@+id/text_photo_empty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/urbanist_700"
+                        android:textSize="24sp"
+                        tools:text="AS" />
+
                     <ImageView
                         android:id="@+id/image_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"
+                        android:visibility="gone"
                         tools:ignore="ContentDescription"
                         tools:src="@drawable/person_placeholder" />
 

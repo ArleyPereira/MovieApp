@@ -184,6 +184,23 @@ class EditProfileFragment : Fragment() {
         binding.editPhone.setText(user.phone)
         binding.editGenre.setText(user.genre)
         binding.editCountry.setText(user.country)
+
+        binding.textPhotoEmpty.isVisible = user.photoUrl?.isEmpty() == true
+        binding.imageProfile.isVisible = user.photoUrl?.isNotEmpty() == true
+
+        if (user.photoUrl?.isNotEmpty() == true) {
+            Glide
+                .with(requireContext())
+                .load(user.photoUrl)
+                .into(binding.imageProfile)
+        } else {
+            binding.textPhotoEmpty.text = getString(
+                R.string.text_photo_empty_edit_profile_fragment,
+                user.firstName?.first(),
+                user.surName?.first()
+            )
+        }
+
     }
 
     private fun openBottomSheetSelectImage() {

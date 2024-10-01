@@ -102,6 +102,7 @@
 
     <!--    ProfileFragment-->
     <string name="text_edit_profile_profile_fragment">Editar perfil</string>
+    <string name="text_user_full_name_profile_fragment">%1$s %2$s</string>
     <string name="text_notificate_profile_fragment">Notificações</string>
     <string name="text_download_profile_fragment">Downloads</string>
     <string name="text_security_profile_fragment">Segurança</string>
@@ -113,6 +114,7 @@
 
     <!--    EditProfileFragment - XML-->
     <string name="text_title_edit_profile_fragment">Editar perfil</string>
+    <string name="text_photo_empty_edit_profile_fragment">%1$s %2$s</string>
     <string name="text_hint_edit_name_edit_profile_fragment">nome</string>
     <string name="text_hint_edit_surname_edit_profile_fragment">sobrenome</string>
     <string name="text_hint_edit_phone_edit_profile_fragment">telefone</string>
