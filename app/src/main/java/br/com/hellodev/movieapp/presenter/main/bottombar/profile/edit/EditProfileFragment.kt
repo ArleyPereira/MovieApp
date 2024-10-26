@@ -48,6 +48,8 @@ class EditProfileFragment : Fragment() {
 
     private var currentPhotoUri: Uri? = null
 
+    private var user: User? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -103,7 +105,7 @@ class EditProfileFragment : Fragment() {
     private fun update(urlImage: String? = null) {
         val user = User(
             id = FirebaseHelper.getUserId(),
-            photoUrl = urlImage ?: "",
+            photoUrl = urlImage ?: user?.photoUrl,
             firstName = binding.editFirstName.text.toString(),
             surName = binding.editSurname.text.toString(),
             email = binding.editEmail.text.toString(),
@@ -142,9 +144,10 @@ class EditProfileFragment : Fragment() {
 
                 is StateView.Success -> {
                     showLoading(false)
-                    stateView.data?.let {
-                        configData(user = it)
-                    }
+
+                    user = stateView.data
+
+                    configData()
                 }
 
                 is StateView.Error -> {
@@ -177,30 +180,29 @@ class EditProfileFragment : Fragment() {
         }
     }
 
-    private fun configData(user: User) {
-        binding.editFirstName.setText(user.firstName)
-        binding.editSurname.setText(user.surName)
+    private fun configData() {
+        binding.editFirstName.setText(user?.firstName)
+        binding.editSurname.setText(user?.surName)
         binding.editEmail.setText(FirebaseHelper.getAuth().currentUser?.email)
-        binding.editPhone.setText(user.phone)
-        binding.editGenre.setText(user.genre)
-        binding.editCountry.setText(user.country)
+        binding.editPhone.setText(user?.phone)
+        binding.editGenre.setText(user?.genre)
+        binding.editCountry.setText(user?.country)
 
-        binding.textPhotoEmpty.isVisible = user.photoUrl?.isEmpty() == true
-        binding.imageProfile.isVisible = user.photoUrl?.isNotEmpty() == true
+        binding.textPhotoEmpty.isVisible = user?.photoUrl?.isEmpty() == true
+        binding.imageProfile.isVisible = user?.photoUrl?.isNotEmpty() == true
 
-        if (user.photoUrl?.isNotEmpty() == true) {
+        if (user?.photoUrl?.isNotEmpty() == true) {
             Glide
                 .with(requireContext())
-                .load(user.photoUrl)
+                .load(user?.photoUrl)
                 .into(binding.imageProfile)
         } else {
             binding.textPhotoEmpty.text = getString(
                 R.string.text_photo_empty_edit_profile_fragment,
-                user.firstName?.first(),
-                user.surName?.first()
+                user?.firstName?.first(),
+                user?.surName?.first()
             )
         }
-
     }
 
     private fun openBottomSheetSelectImage() {
