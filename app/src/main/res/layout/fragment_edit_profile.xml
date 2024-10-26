@@ -60,7 +60,14 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:cardCornerRadius="60dp">
+                    app:cardCornerRadius="60dp"
+                    app:cardElevation="0dp">
+
+                    <ProgressBar
+                        android:id="@+id/progress_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
 
                     <TextView
                         android:id="@+id/text_photo_empty"
@@ -69,6 +76,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/urbanist_700"
                         android:textSize="24sp"
+                        android:visibility="invisible"
                         tools:text="AS" />
 
                     <ImageView
