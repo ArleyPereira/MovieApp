@@ -15,6 +15,7 @@ import br.com.hellodev.movieapp.databinding.FragmentSimilarBinding
 import br.com.hellodev.movieapp.presenter.main.bottombar.home.adapter.MovieAdapter
 import br.com.hellodev.movieapp.presenter.main.moviedetails.details.MovieDetailsViewModel
 import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.applyComponentWindowInsets
 import br.com.hellodev.movieapp.util.onNavigate
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,6 +42,8 @@ class SimilarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        applyComponentWindowInsets(view = binding.recyclerMovies)
 
         initRecycler()
 

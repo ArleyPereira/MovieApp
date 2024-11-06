@@ -12,6 +12,7 @@ import br.com.hellodev.movieapp.MainGraphDirections
 import br.com.hellodev.movieapp.databinding.FragmentHomeBinding
 import br.com.hellodev.movieapp.presenter.main.bottombar.home.adapter.GenreMovieAdapter
 import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.applyComponentWindowInsets
 import br.com.hellodev.movieapp.util.onNavigate
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,6 +37,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        applyComponentWindowInsets(
+            view = binding.recyclerGenres,
+            applyBottom = false
+        )
 
         initRecycler()
 

@@ -21,6 +21,7 @@ import br.com.hellodev.movieapp.presenter.auth.enums.AuthenticationDestinations
 import br.com.hellodev.movieapp.presenter.main.bottombar.profile.adapter.ProfileMenuAdapter
 import br.com.hellodev.movieapp.util.FirebaseHelper
 import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import br.com.hellodev.movieapp.util.showSnackBar
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -49,6 +50,11 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        applyScreenWindowInsets(
+            view = view,
+            applyBottom = false
+        )
 
         getUser()
 

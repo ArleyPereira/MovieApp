@@ -9,10 +9,6 @@
         <item name="colorSecondary">@color/color_default</item>
         <item name="colorSecondaryVariant">@color/color_default</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="ThemePrimaryButton">

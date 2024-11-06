@@ -38,7 +38,8 @@
         <activity
             android:name=".presenter.main.activity.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.MovieApp" />
+            android:theme="@style/Theme.MovieApp"
+            android:windowSoftInputMode="adjustResize" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

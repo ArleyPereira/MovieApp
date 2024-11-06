@@ -20,6 +20,7 @@ import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentMovieGenreBinding
 import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.LoadStatePagingAdapter
 import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.MoviePagingAdapter
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import br.com.hellodev.movieapp.util.hideKeyboard
 import br.com.hellodev.movieapp.util.initToolbar
 import br.com.hellodev.movieapp.util.onNavigate
@@ -57,6 +58,8 @@ class MovieGenreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(toolbar = binding.toolbar)
         binding.toolbar.title = args.name
+
+        applyScreenWindowInsets(view = view, applyBottom = false)
 
         initRecycler()
 
@@ -167,7 +170,10 @@ class MovieGenreFragment : Fragment() {
 
     private fun getMoviesByGenrePagination(forceRequest: Boolean = false) {
         lifecycleScope.launch {
-            viewModel.getMoviesByGenrePagination(genreId = args.genreId, forceRequest = forceRequest)
+            viewModel.getMoviesByGenrePagination(
+                genreId = args.genreId,
+                forceRequest = forceRequest
+            )
             viewModel.movieList.collectLatest { pagingData ->
                 moviePagingAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
             }

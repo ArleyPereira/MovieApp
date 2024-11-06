@@ -25,6 +25,7 @@ import br.com.hellodev.movieapp.databinding.FragmentEditProfileBinding
 import br.com.hellodev.movieapp.domain.model.user.User
 import br.com.hellodev.movieapp.util.FirebaseHelper
 import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import br.com.hellodev.movieapp.util.initToolbar
 import br.com.hellodev.movieapp.util.showSnackBar
 import com.bumptech.glide.Glide
@@ -62,6 +63,8 @@ class EditProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(toolbar = binding.toolbar)
+
+        applyScreenWindowInsets(view = view)
 
         getUser()
 

@@ -18,6 +18,7 @@ import br.com.hellodev.movieapp.MainGraphDirections
 import br.com.hellodev.movieapp.databinding.FragmentSearchBinding
 import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.LoadStatePagingAdapter
 import br.com.hellodev.movieapp.presenter.main.moviegenre.adapter.MoviePagingAdapter
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import br.com.hellodev.movieapp.util.hideKeyboard
 import br.com.hellodev.movieapp.util.onNavigate
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,6 +46,11 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        applyScreenWindowInsets(
+            view = view,
+            applyBottom = false
+        )
 
         initRecycler()
 

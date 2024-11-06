@@ -18,6 +18,7 @@ import br.com.hellodev.movieapp.databinding.BottomSheetDeleteMovieBinding
 import br.com.hellodev.movieapp.databinding.FragmentDownloadBinding
 import br.com.hellodev.movieapp.domain.model.movie.Movie
 import br.com.hellodev.movieapp.presenter.main.bottombar.download.adapter.DownloadMovieAdapter
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import br.com.hellodev.movieapp.util.calculateFileSize
 import br.com.hellodev.movieapp.util.calculateMovieTime
 import br.com.hellodev.movieapp.util.initToolbar
@@ -54,6 +55,11 @@ class DownloadFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(toolbar = binding.toolbar, showIconNavigation = false)
+
+        applyScreenWindowInsets(
+            view = view,
+            applyBottom = false
+        )
 
         initRecycler()
 

@@ -1,6 +1,7 @@
 package br.com.hellodev.movieapp.presenter.main.activity
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -8,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.ActivityMainBinding
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,9 +20,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        applyScreenWindowInsets(
+            view = binding.btnv,
+            applyTop = false
+        )
 
         initNavigation()
     }
@@ -34,10 +42,10 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             binding.btnv.isVisible =
                 destination.id == R.id.menu_home ||
-                destination.id == R.id.menu_search ||
-                destination.id == R.id.menu_favorite ||
-                destination.id == R.id.menu_download ||
-                destination.id == R.id.menu_profile
+                        destination.id == R.id.menu_search ||
+                        destination.id == R.id.menu_favorite ||
+                        destination.id == R.id.menu_download ||
+                        destination.id == R.id.menu_profile
         }
     }
 
