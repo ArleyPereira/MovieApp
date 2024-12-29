@@ -48,12 +48,22 @@ fun applyScreenWindowInsets(
     applyTop: Boolean = true,
     applyBottom: Boolean = true,
 ) {
+    // Obter as margens iniciais definidas no XML
+    val initialLayoutParams = (view.layoutParams as? ViewGroup.MarginLayoutParams)?.let {
+        it.topMargin to it.bottomMargin
+    } ?: (0 to 0)
+
     ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
         val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+        val topMargin = if (applyTop) insets.top + initialLayoutParams.first else initialLayoutParams.first
+        val bottomMargin = if (applyBottom) insets.bottom + initialLayoutParams.second else initialLayoutParams.second
+
         v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-            topMargin = if (applyTop) insets.top else 0
-            bottomMargin = if (applyBottom) insets.bottom else 0
+            this.topMargin = topMargin
+            this.bottomMargin = bottomMargin
         }
+
         WindowInsetsCompat.CONSUMED
     }
 }

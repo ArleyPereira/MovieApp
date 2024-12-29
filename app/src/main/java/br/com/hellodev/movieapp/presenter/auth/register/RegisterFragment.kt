@@ -11,7 +11,13 @@ import androidx.fragment.app.viewModels
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentRegisterBinding
 import br.com.hellodev.movieapp.presenter.main.activity.MainActivity
-import br.com.hellodev.movieapp.util.*
+import br.com.hellodev.movieapp.util.FirebaseHelper
+import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
+import br.com.hellodev.movieapp.util.hideKeyboard
+import br.com.hellodev.movieapp.util.initToolbar
+import br.com.hellodev.movieapp.util.isEmailValid
+import br.com.hellodev.movieapp.util.showSnackBar
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,6 +41,11 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(toolbar = binding.toolbar)
+
+        applyScreenWindowInsets(
+            view = binding.toolbar,
+            applyBottom = false
+        )
 
         initListeners()
     }
@@ -66,14 +77,16 @@ class RegisterFragment : Fragment() {
 
     private fun register(email: String, password: String) {
         viewModel.register(email, password).observe(viewLifecycleOwner) { stateView ->
-            when(stateView){
+            when (stateView) {
                 is StateView.Loading -> {
                     binding.progressLoading.isVisible = true
                 }
+
                 is StateView.Success -> {
                     startActivity(Intent(requireContext(), MainActivity::class.java))
                     requireActivity().finish()
                 }
+
                 is StateView.Error -> {
                     binding.progressLoading.isVisible = false
                     showSnackBar(

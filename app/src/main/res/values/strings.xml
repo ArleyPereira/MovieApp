@@ -30,6 +30,9 @@
     <string name="strong_password_register_fragment">Insira uma senha mais forte.</string>
     <string name="user_not_found_register_fragment">Usuário não encontrado.</string>
 
+    <!--    OnboardingFragment-->
+    <string name="text_button_onboarding_fragment">Iniciar</string>
+
     <!--    HomeAuthFragment-->
     <string name="title_home_auth_fragment">Entrar com</string>
     <string name="button_continue_with_facebook_home_auth_fragment">Continuar com o Facebook</string>

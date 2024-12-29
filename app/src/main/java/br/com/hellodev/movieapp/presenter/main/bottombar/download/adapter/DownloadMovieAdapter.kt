@@ -51,7 +51,7 @@ class DownloadMovieAdapter(
 
         Glide
             .with(context)
-            .load("https://image.tmdb.org/t/p/w200${movie.posterPath}")
+            .load("https://image.tmdb.org/t/p/w500${movie.backdropPath}")
             .into(holder.binding.ivMovie)
 
         holder.binding.textMovie.text = movie.title

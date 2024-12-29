@@ -11,7 +11,7 @@ object Tables {
 object Columns {
     const val MOVIE_ID_COLUMN = "id"
     const val MOVIE_TITLE_COLUMN = "title"
-    const val MOVIE_POSTER_COLUMN = "poster"
+    const val MOVIE_BACKGROUND_PATH_COLUMN = "backdrop_path"
     const val MOVIE_RUNTIME_COLUMN = "runtime"
     const val MOVIE_INSERTION_COLUMN = "insertion"
 }

@@ -2,17 +2,24 @@ package br.com.hellodev.movieapp.presenter.auth.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentLoginBinding
 import br.com.hellodev.movieapp.presenter.main.activity.MainActivity
-import br.com.hellodev.movieapp.util.*
+import br.com.hellodev.movieapp.util.FirebaseHelper
+import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.applyScreenWindowInsets
+import br.com.hellodev.movieapp.util.hideKeyboard
+import br.com.hellodev.movieapp.util.initToolbar
+import br.com.hellodev.movieapp.util.isEmailValid
+import br.com.hellodev.movieapp.util.onNavigate
+import br.com.hellodev.movieapp.util.showSnackBar
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,6 +43,11 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(toolbar = binding.toolbar)
+
+        applyScreenWindowInsets(
+            view = binding.toolbar,
+            applyBottom = false
+        )
 
         initListeners()
     }

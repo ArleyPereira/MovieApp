@@ -11,6 +11,7 @@ import br.com.hellodev.movieapp.databinding.FragmentCommentsBinding
 import br.com.hellodev.movieapp.presenter.main.moviedetails.adapter.CommentsAdapter
 import br.com.hellodev.movieapp.presenter.main.moviedetails.details.MovieDetailsViewModel
 import br.com.hellodev.movieapp.util.StateView
+import br.com.hellodev.movieapp.util.applyComponentWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,6 +36,11 @@ class CommentsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        applyComponentWindowInsets(
+            view = binding.recyclerComments,
+            applyTop = false
+        )
 
         initRecycler()
 

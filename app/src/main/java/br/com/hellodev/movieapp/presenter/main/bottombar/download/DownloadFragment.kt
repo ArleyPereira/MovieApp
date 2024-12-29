@@ -160,7 +160,7 @@ class DownloadFragment : Fragment() {
 
         Glide
             .with(requireContext())
-            .load("https://image.tmdb.org/t/p/w200${movie?.posterPath}")
+            .load("https://image.tmdb.org/t/p/w500${movie?.backdropPath}")
             .into(bottomSheetBinding.ivMovie)
 
         bottomSheetBinding.textMovie.text = movie?.title

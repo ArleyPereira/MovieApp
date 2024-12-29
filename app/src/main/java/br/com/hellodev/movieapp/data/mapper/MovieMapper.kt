@@ -98,7 +98,7 @@ fun Movie.toEntity(): MovieEntity {
     return MovieEntity(
         id = id,
         title = title,
-        poster = posterPath,
+        backdropPath = backdropPath,
         runtime = runtime,
         insertion = System.currentTimeMillis()
     )
@@ -108,7 +108,7 @@ fun MovieEntity.toDomain(): Movie {
     return Movie(
         id = id,
         title = title,
-        posterPath = poster,
+        backdropPath = backdropPath,
         runtime = runtime
     )
 }

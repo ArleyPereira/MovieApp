@@ -16,8 +16,8 @@ data class MovieEntity(
     @ColumnInfo(Columns.MOVIE_TITLE_COLUMN)
     val title: String?,
 
-    @ColumnInfo(Columns.MOVIE_POSTER_COLUMN)
-    val poster: String?,
+    @ColumnInfo(Columns.MOVIE_BACKGROUND_PATH_COLUMN)
+    val backdropPath: String?,
 
     @ColumnInfo(Columns.MOVIE_RUNTIME_COLUMN)
     val runtime: Int?,
