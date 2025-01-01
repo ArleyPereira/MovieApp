@@ -12,8 +12,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hellodev.movieapp.R
+import br.com.hellodev.movieapp.data.mapper.toFavoriteMovie
 import br.com.hellodev.movieapp.databinding.DialogDownloadingBinding
 import br.com.hellodev.movieapp.databinding.FragmentMovieDetailsBinding
+import br.com.hellodev.movieapp.domain.model.favorite.FavoriteMovie
 import br.com.hellodev.movieapp.domain.model.movie.Movie
 import br.com.hellodev.movieapp.presenter.main.moviedetails.adapter.CastAdapter
 import br.com.hellodev.movieapp.presenter.main.moviedetails.adapter.ViewPagerAdapter
@@ -44,6 +46,7 @@ class MovieDetailsFragment : Fragment() {
     private lateinit var castAdapter: CastAdapter
 
     private lateinit var movie: Movie
+    private var favorites: MutableList<FavoriteMovie> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,7 +73,15 @@ class MovieDetailsFragment : Fragment() {
     private fun initListeners() {
         binding.btnDownloading.setOnClickListener { showDialogDownloading() }
 
-        binding.imageBookmark.setOnClickListener { }
+        binding.imageBookmark.setOnClickListener {
+            if (favorites.contains(movie.toFavoriteMovie())) {
+                favorites.remove(movie.toFavoriteMovie())
+            } else {
+                favorites.add(movie.toFavoriteMovie())
+            }
+
+            saveFavorites()
+        }
     }
 
     private fun configTabLayout() {
@@ -142,6 +153,25 @@ class MovieDetailsFragment : Fragment() {
 
                 is StateView.Error -> {
 
+                }
+            }
+        }
+    }
+
+    private fun saveFavorites() {
+        viewModel.saveFavorites(favorites).observe(viewLifecycleOwner) { stateView ->
+            when (stateView) {
+                is StateView.Loading -> {
+                }
+
+                is StateView.Success -> {
+                    //showSnackBar(message = R.string.text_update_profile_success_edit_profile_fragment)
+                }
+
+                is StateView.Error -> {
+//                    showSnackBar(
+//                        message = FirebaseHelper.validError(error = stateView.message ?: "")
+//                    )
                 }
             }
         }

@@ -8,6 +8,7 @@ import br.com.hellodev.movieapp.data.model.movie.GenreResponse
 import br.com.hellodev.movieapp.data.model.movie.MovieResponse
 import br.com.hellodev.movieapp.data.model.movie.MovieReviewResponse
 import br.com.hellodev.movieapp.data.model.movie.PersonResponse
+import br.com.hellodev.movieapp.domain.model.favorite.FavoriteMovie
 import br.com.hellodev.movieapp.domain.model.movie.AuthorDetails
 import br.com.hellodev.movieapp.domain.model.movie.Country
 import br.com.hellodev.movieapp.domain.model.movie.Credit
@@ -110,5 +111,15 @@ fun MovieEntity.toDomain(): Movie {
         title = title,
         backdropPath = backdropPath,
         runtime = runtime
+    )
+}
+
+fun Movie.toFavoriteMovie(): FavoriteMovie {
+    return FavoriteMovie(
+        id = id,
+        title = title,
+        posterPath = posterPath,
+        genres = genres,
+        voteAverage = voteAverage.toString()
     )
 }

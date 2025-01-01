@@ -9,7 +9,7 @@
     <!--    BottomBar-->
     <string name="title_menu_home">Início</string>
     <string name="title_menu_search">Pesquisar</string>
-    <string name="title_menu_favorite">Favorite</string>
+    <string name="title_menu_favorite">Favoritos</string>
     <string name="title_menu_download">Downloads</string>
     <string name="title_menu_profile">Perfil</string>
 
