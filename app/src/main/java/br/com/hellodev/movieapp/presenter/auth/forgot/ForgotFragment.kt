@@ -11,7 +11,6 @@ import br.com.hellodev.movieapp.R
 import br.com.hellodev.movieapp.databinding.FragmentForgotBinding
 import br.com.hellodev.movieapp.util.FirebaseHelper
 import br.com.hellodev.movieapp.util.StateView
-import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import br.com.hellodev.movieapp.util.hideKeyboard
 import br.com.hellodev.movieapp.util.initToolbar
 import br.com.hellodev.movieapp.util.isEmailValid
@@ -39,8 +38,6 @@ class ForgotFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(toolbar = binding.toolbar)
-
-        applyScreenWindowInsets(view = binding.toolbar)
 
         initListeners()
     }

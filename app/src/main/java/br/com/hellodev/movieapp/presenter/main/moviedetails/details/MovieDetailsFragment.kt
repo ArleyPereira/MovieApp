@@ -69,6 +69,8 @@ class MovieDetailsFragment : Fragment() {
 
     private fun initListeners() {
         binding.btnDownloading.setOnClickListener { showDialogDownloading() }
+
+        binding.imageBookmark.setOnClickListener { }
     }
 
     private fun configTabLayout() {

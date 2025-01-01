@@ -14,7 +14,6 @@ import br.com.hellodev.movieapp.databinding.FragmentLoginBinding
 import br.com.hellodev.movieapp.presenter.main.activity.MainActivity
 import br.com.hellodev.movieapp.util.FirebaseHelper
 import br.com.hellodev.movieapp.util.StateView
-import br.com.hellodev.movieapp.util.applyScreenWindowInsets
 import br.com.hellodev.movieapp.util.hideKeyboard
 import br.com.hellodev.movieapp.util.initToolbar
 import br.com.hellodev.movieapp.util.isEmailValid
@@ -43,11 +42,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(toolbar = binding.toolbar)
-
-        applyScreenWindowInsets(
-            view = binding.toolbar,
-            applyBottom = false
-        )
 
         initListeners()
     }
