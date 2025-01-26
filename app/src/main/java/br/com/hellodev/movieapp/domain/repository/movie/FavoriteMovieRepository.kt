@@ -6,4 +6,6 @@ interface FavoriteMovieRepository {
 
     suspend fun saveFavorites(favorites: List<FavoriteMovie>)
 
+    suspend fun getFavorites(): List<FavoriteMovie>
+
 }

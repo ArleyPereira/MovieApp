@@ -81,6 +81,8 @@ class MovieDetailsFragment : Fragment() {
             }
 
             saveFavorites()
+
+            changedFavorite()
         }
     }
 
@@ -129,7 +131,7 @@ class MovieDetailsFragment : Fragment() {
                 is StateView.Success -> {
                     stateView.data?.let {
                         this.movie = it
-                        configData()
+                        getFavorites()
                     }
                 }
 
@@ -165,15 +167,37 @@ class MovieDetailsFragment : Fragment() {
                 }
 
                 is StateView.Success -> {
-                    //showSnackBar(message = R.string.text_update_profile_success_edit_profile_fragment)
+
                 }
 
                 is StateView.Error -> {
-//                    showSnackBar(
-//                        message = FirebaseHelper.validError(error = stateView.message ?: "")
-//                    )
                 }
             }
+        }
+    }
+
+    private fun getFavorites() {
+        viewModel.getFavorites().observe(viewLifecycleOwner) { stateView ->
+            when (stateView) {
+                is StateView.Loading -> {
+                }
+
+                is StateView.Success -> {
+                    favorites.addAll(stateView.data ?: emptyList())
+                    configData()
+                }
+
+                is StateView.Error -> {
+                }
+            }
+        }
+    }
+
+    private fun changedFavorite() {
+        if (favorites.contains(movie.toFavoriteMovie())) {
+            binding.imageBookmark.setImageResource(R.drawable.ic_bookmark_fill)
+        } else {
+            binding.imageBookmark.setImageResource(R.drawable.ic_bookmark_line)
         }
     }
 
@@ -228,6 +252,8 @@ class MovieDetailsFragment : Fragment() {
         binding.textGenres.text = getString(R.string.text_all_genres_movie_details_fragment, genres)
 
         binding.textDescription.text = movie.overview
+
+        changedFavorite()
 
         getCredits()
     }

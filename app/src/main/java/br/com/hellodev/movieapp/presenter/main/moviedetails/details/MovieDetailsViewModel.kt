@@ -7,6 +7,7 @@ import androidx.lifecycle.liveData
 import br.com.hellodev.movieapp.domain.local.usecase.InsertMovieUseCase
 import br.com.hellodev.movieapp.domain.model.favorite.FavoriteMovie
 import br.com.hellodev.movieapp.domain.model.movie.Movie
+import br.com.hellodev.movieapp.domain.usecase.favorite.GetFavoritesUseCase
 import br.com.hellodev.movieapp.domain.usecase.favorite.SaveFavoritesUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.GetCreditsUseCase
 import br.com.hellodev.movieapp.domain.usecase.movie.GetMovieDetailsUseCase
@@ -21,7 +22,8 @@ class MovieDetailsViewModel @Inject constructor(
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
     private val getCreditsUseCase: GetCreditsUseCase,
     private val insertMovieUseCase: InsertMovieUseCase,
-    private val saveFavoritesUseCase: SaveFavoritesUseCase
+    private val saveFavoritesUseCase: SaveFavoritesUseCase,
+    private val getFavoritesUseCase: GetFavoritesUseCase
 ) : ViewModel() {
 
     private val _movieId = MutableLiveData(0)
@@ -86,6 +88,19 @@ class MovieDetailsViewModel @Inject constructor(
             saveFavoritesUseCase(favorites)
 
             emit(StateView.Success(Unit))
+        } catch (exception: Exception) {
+            exception.printStackTrace()
+            emit(StateView.Error(message = exception.message))
+        }
+    }
+
+    fun getFavorites() = liveData(Dispatchers.IO) {
+        try {
+            emit(StateView.Loading())
+
+            val favorites = getFavoritesUseCase()
+
+            emit(StateView.Success(favorites))
         } catch (exception: Exception) {
             exception.printStackTrace()
             emit(StateView.Error(message = exception.message))
