@@ -123,3 +123,13 @@ fun Movie.toFavoriteMovie(): FavoriteMovie {
         voteAverage = voteAverage.toString()
     )
 }
+
+fun FavoriteMovie.toDomain(): Movie {
+    return Movie(
+        id = id,
+        title = title,
+        posterPath = posterPath,
+        genres = genres,
+        voteAverage = voteAverage?.toFloat()
+    )
+}

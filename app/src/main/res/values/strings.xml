@@ -90,6 +90,11 @@
     <string name="text_title_empty_state_download_fragment">Sua lista está vazia</string>
     <string name="text_message_empty_state_download_fragment">Parece que você não realizou o download de nenhum filme.</string>
 
+    <!--    FavoriteFragment-->
+    <string name="text_title_favorite_fragment">Favoritos</string>
+    <string name="text_title_empty_state_favorite_fragment">Sua lista está vazia</string>
+    <string name="text_message_empty_state_favorite_fragment">Parece que você não adicionou nenhum filme aos favoritos.</string>
+
     <!--    DialogDownloading-->
     <string name="text_title_dialog_downloading">Download</string>
     <string name="text_message_dialog_downloading">Filmes ainda baixando...\nAguarde ou oculte o processo</string>

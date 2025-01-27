@@ -74,8 +74,8 @@ class MovieDetailsFragment : Fragment() {
         binding.btnDownloading.setOnClickListener { showDialogDownloading() }
 
         binding.imageBookmark.setOnClickListener {
-            if (favorites.contains(movie.toFavoriteMovie())) {
-                favorites.remove(movie.toFavoriteMovie())
+            if (favorites.any { it.id == movie.id }) {
+                favorites.removeIf { it.id == movie.id }
             } else {
                 favorites.add(movie.toFavoriteMovie())
             }
@@ -194,7 +194,7 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun changedFavorite() {
-        if (favorites.contains(movie.toFavoriteMovie())) {
+        if (favorites.any { it.id == movie.id }) {
             binding.imageBookmark.setImageResource(R.drawable.ic_bookmark_fill)
         } else {
             binding.imageBookmark.setImageResource(R.drawable.ic_bookmark_line)
